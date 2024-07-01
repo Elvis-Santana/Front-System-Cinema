@@ -1,0 +1,12 @@
+{
+  "Produtora":[
+    {"id":1,"nome":"cavalos produtora","filmes":[]}
+  ],
+
+  "Filme":[
+    {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023"},
+    {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024"}
+
+  ]
+
+}
