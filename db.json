@@ -1,11 +1,30 @@
 {
   "Produtora":[
-    {"id":1,"nome":"cavalos produtora","filmes":[]}
+    {
+      "id":1,
+      "nome":"cavalos produtora",
+      "filmes":[
+        {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023"},
+        {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024"},
+        {"id":3,"id_produtora":1,"titulo":"cavalos 3. a revolta ","Ano":"20/02/2029"}
+
+      ]
+    },
+    {
+      "id":2,
+      "nome":"a produtora",
+      "filmes":[
+        {"id":4,"id_produtora":2,"titulo":"os devs","Ano":"20/06/2023"}
+
+      ]
+    }
   ],
 
   "Filme":[
     {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023"},
-    {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024"}
+    {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024"},
+    {"id":3,"id_produtora":1,"titulo":"cavalos 3. a revolta ","Ano":"20/02/2029"},
+    {"id":4,"id_produtora":2,"titulo":"os devs","Ano":"20/06/2023"}
 
   ]
 

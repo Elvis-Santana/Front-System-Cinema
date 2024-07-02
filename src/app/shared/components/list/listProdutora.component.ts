@@ -4,21 +4,28 @@ import { Observable } from 'rxjs';
 import { IProdutora } from '../../interfaces/Produtora.interface';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CardProdutoraComponent } from '../card/cardProdutora.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-list-produtora',
   standalone: true,
-  imports: [HttpClientModule,CommonModule],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss'
+  imports: [
+    HttpClientModule,
+    CommonModule,
+    CardProdutoraComponent,
+    MatCardModule
+  ],
+  templateUrl: './listProdutora.component.html',
+  styleUrl: './listProdutora.component.scss'
 })
-export class ListComponent implements OnInit {
+export class ListProdutoraComponent implements OnInit {
 
   public list$: Observable<IProdutora[]> = new Observable<IProdutora[]>()
 
   protected listService = inject(ListService);
 
-  async  ngOnInit() {
+  async ngOnInit() {
     this.list$ = (await this.listService.GetProdutora())
   }
 
