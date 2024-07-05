@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { IProdutora } from '../../interfaces/Produtora.interface';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { CardProdutoraComponent } from '../card/cardProdutora.component';
+import { CardProdutoraComponent } from '../cardProdutora/cardProdutora.component';
 import { MatCardModule } from '@angular/material/card';
 
 @Component({
