@@ -16,10 +16,10 @@ import { MatCardModule } from '@angular/material/card';
     CardProdutoraComponent,
     MatCardModule
   ],
-  templateUrl: './listProdutora.component.html',
-  styleUrl: './listProdutora.component.scss'
+  templateUrl: './list.component.html',
+  styleUrl: './list.component.scss'
 })
-export class ListProdutoraComponent implements OnInit {
+export class ListComponent implements OnInit {
 
   public list$: Observable<IProdutora[]> = new Observable<IProdutora[]>()
 

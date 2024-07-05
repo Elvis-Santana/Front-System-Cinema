@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { ListProdutoraComponent } from './shared/components/listProdutora/listProdutora.component';
+import { ListComponent } from './shared/components/list/list.component';
 
 export const routes: Routes = [
   {
     path:'',
-    component:ListProdutoraComponent
+    component:ListComponent
   }
 ];
