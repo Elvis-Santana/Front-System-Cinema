@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { IProdutora } from '../../interfaces/Produtora.interface';
+import { IProdutora } from '../../../interfaces/Produtora.interface';
 import { MatCardModule } from '@angular/material/card'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 
 @Component({
-  selector: 'app-card',
+  selector: 'app-card-Produtora',
   standalone: true,
   imports: [
     MatCardModule,
