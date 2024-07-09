@@ -1,12 +1,47 @@
 <div class="conatiner-content ">
+  @switch (this.url) {
+    @case (PalavrasReservadas.PRODUTORA) {
+      <div class="conatiner-list-Produtora">
+        @for (p of listP$|async ; track $index) {
+        <app-card-Produtora [Produtora]="p"></app-card-Produtora>
 
+      }
+
+    </div>
+  }
+
+  @case (PalavrasReservadas.FILME) {
+    <div class="conatiner-list-filme">
+      @for (f of listF$|async ; track $index) {
+        <app-card-filme [Filme]="f"></app-card-filme>
+
+      }
+
+    </div>
+  }
+
+  @case (PalavrasReservadas.CINEMA) {
+    <p>Em Andamento</p>
+  }
+
+  @default {
   <div class="conatiner-list-Produtora">
-    @for (l of list$|async ; track $index) {
-      <app-card [Produtora]="l"></app-card>
-
+    @for (p of listP$|async ; track $index) {
+      <app-card-Produtora [Produtora]="p"></app-card-Produtora>
 
     }
 
   </div>
+
+  <div class="conatiner-list-filme">
+      @for (f of listF$|async ; track $index) {
+        <app-card-filme [Filme]="f"></app-card-filme>
+
+      }
+
+    </div>
+  }
+
+}
 
 </div>
