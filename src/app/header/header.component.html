@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <span   [routerLink]="['/']">My App</span>
+
+
+  <mat-nav-list  class="contaner-list-nav">
+    <mat-list-item>
+      <a  matListItemTitle  [routerLink]="['/filme']">FILMES</a>
+
+    </mat-list-item>
+
+    <mat-list-item>
+      <a  matListItemTitle  [routerLink]="['/produtora']">PRODUTORA</a>
+
+    </mat-list-item>
+    <mat-list-item>
+      <a  matListItemTitle  [routerLink]="['/cinema']">CINEMA</a>
+
+    </mat-list-item>
+  </mat-nav-list>
+
+
+
+</mat-toolbar>
