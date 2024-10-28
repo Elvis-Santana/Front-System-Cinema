@@ -3,4 +3,6 @@ export interface IFilme {
   id_produtora: number,
   titulo: string,
   Ano: string,
+  imgPath:string
+  status?:string
 }

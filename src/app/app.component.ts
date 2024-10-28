@@ -5,7 +5,6 @@ import { MatButtonModule, MatButton } from "@angular/material/button"
 
 import { MatIcon } from "@angular/material/icon"
 import { MatToolbarModule } from "@angular/material/toolbar"
-import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './header/header.component';
 

@@ -1,0 +1,32 @@
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  mat-card {
+    display: flex;
+    width: 500px;
+    height: 600px;
+    background-color: rgba(0, 255, 255, 0.644);
+
+    mat-card-header, mat-card-actions  {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    mat-card-footer {
+
+      background-color: rgba(217, 255, 0, 0.719);
+
+    }
+  }
+
+}
+
+
+
+
+img {
+  height: 350px;
+}

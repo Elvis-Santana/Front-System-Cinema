@@ -1,0 +1,59 @@
+.conatiner-carrosel {
+  position: relative;
+  padding: 16px;
+  max-width:650px;
+  max-height:450px;
+
+  margin: 0 auto;
+
+}
+
+.gallery-wrapper {
+  overflow-x: auto;
+}
+
+.gallery-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.gallery-wrapper {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.gallery {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 15px;
+
+  .item {
+  width: 300px;
+  flex-shrink: 0;
+  opacity: 0.6;
+  //transition: all 600ms ease-in-out;
+  }
+
+}
+
+.btn{
+  position: absolute;
+  top: 7%;
+  height: 400px;
+  width: 25px;
+  opacity: 0.5;
+  border: none;
+
+
+  &:hover{
+    transition: 0.5s;
+    opacity: 0.8;
+  }
+}
+
+.btn_R{
+  right: 0;
+}
+.btn_L{
+  left: 0;
+}

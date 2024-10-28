@@ -1,0 +1,23 @@
+<div class="conatiner-carrosel">
+  <div class="gallery-wrapper" #scrollbar>
+    <div class="gallery">
+      @for (img of  imgCarrosel() ; track $index) {
+
+        <img [src]="img" #items class="item" alt="">
+
+      }
+    </div>
+  </div>
+  <button class="btn btn_R" (click)="scrollInto('r')">
+    <mat-icon fontIcon="chevron_left">Arrow</mat-icon>
+
+  </button>
+
+  <Button class="btn btn_L" (click)="scrollInto('l')">
+    <mat-icon fontIcon="chevron_right"></mat-icon>
+
+  </Button>
+
+
+
+</div>

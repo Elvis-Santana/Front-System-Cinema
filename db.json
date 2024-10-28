@@ -4,28 +4,68 @@
       "id":1,
       "nome":"cavalos produtora",
       "filmes":[
-        {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023"},
-        {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024"},
-        {"id":3,"id_produtora":1,"titulo":"cavalos 3. a revolta ","Ano":"20/02/2029"}
+        {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023","imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"},
 
+        {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024","imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"},
+        {"id":3,"id_produtora":1,"titulo":"cavalos 3. a revolta ","Ano":"20/02/2029","imgPath":"https://bubblegeek.com.br/media/O%20Cara%20da%20Piscina_P%C3%83%C2%B4ster_Diamond%20Films.jpg"}
       ]
     },
     {
       "id":2,
       "nome":"a produtora",
       "filmes":[
-        {"id":4,"id_produtora":2,"titulo":"os devs","Ano":"20/06/2023"}
-
+        {
+          "id":4,"id_produtora":2,"titulo":"os devs","Ano":"20/06/2023","imgPath":"https://3.bp.blogspot.com/-foX4lHKiX3w/ThtJFfusmWI/AAAAAAAAAGI/4OT14qBTF2Q/s320/jack.jpg"}
       ]
     }
   ],
 
   "Filme":[
-    {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023"},
-    {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024"},
-    {"id":3,"id_produtora":1,"titulo":"cavalos 3. a revolta ","Ano":"20/02/2029"},
-    {"id":4,"id_produtora":2,"titulo":"os devs","Ano":"20/06/2023"}
+    {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023","imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"},
+
+    {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024","imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"},
+    {"id":3,"id_produtora":1,"titulo":"cavalos 3. a revolta ","Ano":"20/02/2029","imgPath":"https://bubblegeek.com.br/media/O%20Cara%20da%20Piscina_P%C3%83%C2%B4ster_Diamond%20Films.jpg"},
+
+    {
+      "id":4,"id_produtora":2,"titulo":"os devs","Ano":"20/06/2023","imgPath":"https://3.bp.blogspot.com/-foX4lHKiX3w/ThtJFfusmWI/AAAAAAAAAGI/4OT14qBTF2Q/s320/jack.jpg"},
+      {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023","imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"},
+
+      {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024","imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"},
+      {"id":3,"id_produtora":1,"titulo":"cavalos 3. a revolta ","Ano":"20/02/2029","imgPath":"https://bubblegeek.com.br/media/O%20Cara%20da%20Piscina_P%C3%83%C2%B4ster_Diamond%20Films.jpg"},
+
+      {
+        "id":4,"id_produtora":2,"titulo":"os devs","Ano":"20/06/2023","imgPath":"https://3.bp.blogspot.com/-foX4lHKiX3w/ThtJFfusmWI/AAAAAAAAAGI/4OT14qBTF2Q/s320/jack.jpg"}
+
+  ],
+
+
+  "Cinema":[
+      {
+        "id":1,
+        "idAdministrador":2,
+        "Name":"cinema",
+
+        "Administrador":{
+          "id":2,
+          "name":"elvis"
+        },
+
+        "Salas":[
+
+        ],
+
+        "Filmes_Em_Cartaz":[
+          {"id":1,"id_produtora":1,"titulo":"cavalos","Ano":"20/02/2023","imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"},
+
+          {"id":2,"id_produtora":1,"titulo":"cavalos 2. a vingaca ","Ano":"20/02/2024","imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"}
+        ],
+
+        "Employees":[
+
+        ]
+      }
 
   ]
 
 }
+

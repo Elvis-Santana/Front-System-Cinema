@@ -5,6 +5,9 @@
 
 mat-toolbar{
   box-sizing: border-box;
+  background-color: #272421;
+
+
 
 }
 .contaner-list-nav{
@@ -24,6 +27,11 @@ mat-toolbar{
 
 
 }
+a,span{
+  color: aliceblue;
+
+}
 span{
   cursor: pointer;
+
 }

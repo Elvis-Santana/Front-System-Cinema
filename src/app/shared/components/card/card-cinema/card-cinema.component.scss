@@ -1,0 +1,29 @@
+mat-card{
+   width: 300px;
+}
+
+
+mat-card-header{
+display: flex;
+justify-content: center;
+
+}
+mat-card-content{
+  height: 400px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+
+}
+
+.btnViewFilmes{
+  border: none;
+  border-radius: 15px;
+}

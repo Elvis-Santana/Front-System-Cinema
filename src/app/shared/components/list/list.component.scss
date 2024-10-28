@@ -1,25 +1,39 @@
-div{
+.conatiner-content {
   flex-wrap: wrap;
 
 }
 
-.conatiner-list-Produtora,.conatiner-list-filme {
+.conatiner-list-Produtora,
+.conatiner-list-filme,
+.container-list-cinema {
   display: flex;
   margin-top: 1em;
   box-sizing: border-box;
   height: auto;
   width: 90%;
 
+}
+
+.conatiner-list-Produtora,
+.conatiner-list-filme {
+
+
   justify-content: center;
 }
-.conatiner-list-Produtora{
-  background-color: rgb(153, 0, 255);
+
+
+.conatiner-list-Produtora {
+  //background-color: rgb(153, 0, 255);
 
 }
 
-.conatiner-list-filme{
+.conatiner-list-filme {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px;
-  background-color: red;
 }
+
+
+
+
+
