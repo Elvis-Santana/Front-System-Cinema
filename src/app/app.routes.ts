@@ -32,15 +32,16 @@ export const routes: Routes = [
         component: ListComponent
 
       },
+      {
+        path: 'filme/detalhar/:id',
+        component: DetalharFilmeComponent
+      },
+
     ]
 
   },
 
 
-  {
-    path: 'filme/detalhar/:id',
-    component: DetalharFilmeComponent
-  },
 
 
   {
