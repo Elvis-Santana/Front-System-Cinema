@@ -4,12 +4,14 @@ import { DetalharFilmeComponent } from './pages/detalhar-filme/detalhar-filme.co
 import { LoginComponent } from './pages/conta/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContaComponent } from './pages/conta/conta.component';
+import { authGuard } from './Auth/auth.guard';
 
 export const routes: Routes = [
 
 
   {
     path: '',
+    canActivate:[authGuard],
     component: HomeComponent,
     children: [
       {
@@ -43,11 +45,14 @@ export const routes: Routes = [
 
 
 
-
+  {
+    path: 'criarConta',
+    component:ContaComponent
+  },
   {
 
     path: 'login',
-    component: ContaComponent
+    component: LoginComponent
 
   },
 
