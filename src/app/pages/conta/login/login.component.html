@@ -1,1 +1,23 @@
+<section>
+  <article>
+    <form [formGroup]="form">
+      <mat-label class="label-input">Email</mat-label>
+      <input type="text" formControlName="email">
 
+      <mat-label class="label-input">Password</mat-label>
+      <input type="text" formControlName="password">
+
+      <p class="label">
+        Não tem conta ?
+        <a matListItemTitle [routerLink]="['/criarConta']">click aquí </a>
+      </p>
+
+      <button (click)="OnEventLogin()">ENTER</button>
+
+      <a matListItemTitle [routerLink]="['']">home </a>
+
+    </form>
+
+
+  </article>
+</section>
