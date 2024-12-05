@@ -4,6 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { IFilme } from '../../../interfaces/Filme.interface';
 import { Router, RouterModule, RouterOutlet } from '@angular/router';
+import { RouterService } from '../../../services/routerService/router.service';
+import { CinemaSelectionComponentComponetService } from '../../../services/CinemaSelectionComponentComponetService/cinema-selection-component-componet.service';
 
 @Component({
   selector: 'app-card-filme',
@@ -21,11 +23,16 @@ import { Router, RouterModule, RouterOutlet } from '@angular/router';
 export class CardFilmeComponent {
   @Input() Filme!: IFilme;
 
-   protected router =inject(Router);
+  protected router = inject(RouterService);
+  protected CinemaSelectionComponentComponetService = inject(CinemaSelectionComponentComponetService);
 
-  public route(filme:IFilme):void{
-    this.router.navigate([`filme/detalhar/${filme.id}`])
 
+  public OnEventDetanhar = (filme: IFilme) => this.router.nav(`filme/detalhar/${filme.id}`)
+
+
+  public OnEventListCinema(id:Number){
+    this.CinemaSelectionComponentComponetService.OnEventGetCinemasForMovie(id);
+    this.CinemaSelectionComponentComponetService.OnShowSelectionCinemaOpen()
   }
 
 }
