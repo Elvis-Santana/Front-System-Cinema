@@ -1,14 +1,15 @@
 import { IFilme } from "./Filme.interface";
+import { IUser } from "./IUser.interface";
 
 
 
 export interface ICinema{
-  Id :number,
+  id :number,
   idAdministrador :number,
-  Name :String,
-
-  // Administrador { get; set; } = new();
+  name :String,
+  precoDoIngresso:number,
+  Administrador :IUser
   //  Salas { get; set; } = new();
-    Filmes_Em_Cartaz :IFilme[]
+    filmes_Em_Cartaz :IFilme[]
   //   Employees { get; set; } = new();
 }

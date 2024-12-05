@@ -1,8 +1,8 @@
 import { IFilme } from "./Filme.interface";
 
 export interface IProdutora{
- id:number,
+  id:number,
  nome:string,
- filmes:Array<IFilme>
+ filmes:IFilme[]
 
 }
