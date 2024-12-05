@@ -7,12 +7,13 @@ import { MatCardModule } from '@angular/material/card';
 import { IFilme } from '../../interfaces/Filme.interface';
 import { CardFilmeComponent } from '../card/card-filme/card-filme.component';
 import { Router, RouterModule } from '@angular/router';
-import { PalavrasReservadas } from '../../../../../environment/enum/PalavrasReservadas';
+import { PalavrasReservadas } from '../../../../environments/enum/PalavrasReservadas';
 import { MatIconModule } from '@angular/material/icon';
 import { ICinema } from '../../interfaces/ICinema.interface';
 import { CardCinemaComponent } from '../card/card-cinema/card-cinema.component';
 import { CardProdutoraComponent } from '../card/card-Produtora/cardProdutora.component';
 import { CarroselComponent } from '../carrosel/carrosel.component';
+import { CinemaSelectionComponentComponent } from '../CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
 
 
 
@@ -28,7 +29,9 @@ import { CarroselComponent } from '../carrosel/carrosel.component';
     MatCardModule,
     RouterModule,
     MatIconModule,
-    CarroselComponent
+    CarroselComponent,
+    MatCardModule,
+    CinemaSelectionComponentComponent
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
@@ -75,6 +78,7 @@ export class ListComponent implements OnInit {
   async loadProdutoras() {
     (await this.listService.GetProdutora()).subscribe((data) => {
       this.produtorasSignal.set(data)
+
     })
 
   }
