@@ -7,6 +7,7 @@ import { MatIcon } from "@angular/material/icon"
 import { MatToolbarModule } from "@angular/material/toolbar"
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './header/header.component';
+import { CinemaSelectionComponentComponent } from './shared/components/CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +16,11 @@ import { HeaderComponent } from './header/header.component';
     RouterOutlet,
     MatListModule,
     MatButtonModule,
-    MatIcon,
     MatToolbarModule,
-    HomeComponent,
     RouterOutlet,
     RouterModule,
-    HeaderComponent
+    CinemaSelectionComponentComponent
+
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

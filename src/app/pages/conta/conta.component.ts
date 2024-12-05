@@ -7,6 +7,7 @@ import { CriarContaUsuarioComponent } from './criar-conta-usuario/criar-conta-us
   standalone: true,
   imports: [
  CriarContaUsuarioComponent
+ 
 
   ],
   templateUrl: './conta.component.html',

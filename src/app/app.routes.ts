@@ -11,12 +11,13 @@ export const routes: Routes = [
 
   {
     path: '',
-    canActivate:[authGuard],
+   // canActivate:[authGuard],
     component: HomeComponent,
     children: [
       {
         path: '',
         component: ListComponent,
+
       },
       {
         path: 'filme',
@@ -55,6 +56,7 @@ export const routes: Routes = [
     component: LoginComponent
 
   },
+
 
 
 ];
