@@ -1,14 +1,16 @@
-mat-card{
-   width: 300px;
+mat-card {
+  width: 300px;
 }
 
 
-mat-card-header{
-display: flex;
-justify-content: center;
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(245, 243, 243);
 
 }
-mat-card-content{
+
+mat-card-content {
   height: 400px;
 
   overflow-y: auto;
@@ -23,7 +25,8 @@ mat-card-content{
 
 }
 
-.btnViewFilmes{
+.btnViewFilmes {
   border: none;
   border-radius: 15px;
+  width: 100%;
 }

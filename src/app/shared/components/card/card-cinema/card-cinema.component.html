@@ -2,14 +2,14 @@
   <mat-card-header>
 
       <mat-card-title>
-      <h2>{{Cinema.Name}}</h2>
+      <h2>{{Cinema.name}}</h2>
       </mat-card-title>
   </mat-card-header>
 
     @if(ViewFilmes){
       <mat-card-content>
 
-        @for (f of Cinema.Filmes_Em_Cartaz; track $index) {
+        @for (f of Cinema.filmes_Em_Cartaz; track $index) {
         <app-card-filme [Filme]="f"></app-card-filme>
         }
 
