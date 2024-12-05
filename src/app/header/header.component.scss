@@ -1,16 +1,16 @@
-
 .example-spacer {
   flex: auto;
 }
 
-mat-toolbar{
+mat-toolbar {
   box-sizing: border-box;
   background-color: #272421;
 
 
 
 }
-.contaner-list-nav{
+
+.contaner-list-nav {
   display: flex;
   width: 20em;
   height: 100%;
@@ -19,7 +19,7 @@ mat-toolbar{
   flex-direction: row;
   box-sizing: border-box;
 
-  a{
+  a {
     text-decoration: none;
   }
 
@@ -27,11 +27,36 @@ mat-toolbar{
 
 
 }
-a,span{
+
+a,
+span {
   color: aliceblue;
 
 }
-span{
+
+span {
   cursor: pointer;
 
+}
+
+.cont-icon {
+  display: flex;
+
+  border-radius: 3px;
+  margin: 0 0 0 auto;
+
+  .icon {
+    border-radius: 3px;
+    border: none;
+    width: 50px;
+    height: 50px;
+    background-color: #83796d;
+      color: white;
+    &:hover {
+      transition: .3s;
+      background-color: #c9c6c2;
+
+    }
+
+  }
 }

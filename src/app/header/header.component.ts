@@ -5,6 +5,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { HomeComponent } from '../pages/home/home.component';
+import { MenuConfigComponent } from '../MenuConfig/menu-config/menu-config.component';
 
 @Component({
   selector: 'app-header',
@@ -17,11 +18,18 @@ import { HomeComponent } from '../pages/home/home.component';
     MatToolbarModule,
     HomeComponent,
     RouterOutlet,
-    RouterModule
+    RouterModule,
+    MenuConfigComponent,
+    MatButtonModule
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  public view: boolean = false;
+
+  public OnEventView = () => this.view = !this.view;
+
+
 
 }

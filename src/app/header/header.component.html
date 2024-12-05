@@ -24,5 +24,15 @@
   </mat-nav-list>
 
 
+  <div class="cont-icon">
+    <button (click)="OnEventView()" class="icon" >
+      <mat-icon>settings</mat-icon>
+     </button>
+  </div>
+
+
 
 </mat-toolbar>
+
+<app-menu-config [viewMenuConfig]="view"></app-menu-config>
+
