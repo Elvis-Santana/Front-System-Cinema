@@ -7,6 +7,9 @@ import { token } from '../../Model/tokenModel';
 import { Token } from '@angular/compiler';
 import { ITokenReturn } from '../../interfaces/ITokenReturn';
 import { TokenReturn } from '../../Model/tokenResultModel';
+import { Router } from '@angular/router';
+import { authGuard } from '../../../Auth/auth.guard';
+import { RouterService } from '../routerService/router.service';
 
 
 
@@ -17,7 +20,7 @@ import { TokenReturn } from '../../Model/tokenResultModel';
 })
 export class SessaoServiceService {
   protected http = inject(HttpClient);
-
+  protected router = inject(RouterService);
   constructor() { }
 
 
@@ -30,14 +33,14 @@ export class SessaoServiceService {
 
   public async login(lofin: ILogin) {
     this.http
-    .post(`${Ports.Api_CSharp_PortsLogin}${lofin.password}`, null)
-    .subscribe((e) => {
+      .post(`${Ports.Api_CSharp_PortsLogin}${lofin.password}`, null)
+      .subscribe((e) => {
 
-      const token = e as token;
+        const token = e as token;
 
-      console.log(token);
-      this.setToken(token.token);
-    })
+        console.log(token);
+        this.setToken(token.token);
+      })
   }
 
   public setToken(token: String) {
@@ -46,24 +49,27 @@ export class SessaoServiceService {
     console.log(localStorage.getItem("token"));
   }
 
-  public async validToken(token: token) {
+  public logout(){
+    localStorage.removeItem("token");
+    this.router.nav('/login');
 
-   return new  Promise<ITokenReturn>((result,reject)=>{
-      this.http.get(`${Ports.Api_CSharp_PortsLogin}${token.token}`)
+  };
+
+
+  public validToken = async (token: token) => new Promise<ITokenReturn>((result, reject) => {
+    this.http.get(`${Ports.Api_CSharp_PortsLogin}${token.token}`)
       .subscribe((e) => {
-        return  result(new TokenReturn(true));
+        return result(new TokenReturn(true));
       }, (error: HttpErrorResponse) => {
-
-        console.log(error)
-
-        if(error.error!=null){
-          return  reject(new TokenReturn(false));
-
-        }
-        return  reject(new TokenReturn(false));
+        console.log(error.error)
+        if (error.error != null)
+          return reject(new TokenReturn(false));
+        return reject(new TokenReturn(false));
 
       })
-   })
-  }
+  })
+
+
+
 
 }
