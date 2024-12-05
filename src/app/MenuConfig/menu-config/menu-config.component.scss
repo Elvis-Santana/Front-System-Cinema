@@ -1,0 +1,10 @@
+mat-card{
+  border-radius: 0;
+  background-color: #383532;
+  mat-card-content{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+}
