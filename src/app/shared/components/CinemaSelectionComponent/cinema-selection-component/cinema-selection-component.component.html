@@ -1,0 +1,41 @@
+@if (CinemaSelectionComponentComponetService.GetShowSelectionCinema()) {
+<div class="container-list-cinema-comprar">
+
+  <div class="list-cinema-comprar">
+    <div class="container-btn-close">
+      <button mat-icon-button (click)="CinemaSelectionComponentComponetService.OnShowSelectionCinemaClose()">
+
+        <mat-icon>arrow_circle_left</mat-icon>
+      </button>
+
+
+    </div>
+
+    <div class="container-list-card">
+      @for (item of CinemaSelectionComponentComponetService.GetCinemas(); track $index) {
+      <mat-card class="cardListComprar">
+
+
+        <mat-card-content>
+
+          <section>
+            <h2>
+              {{item.name}}
+            </h2>
+
+            <article>
+              <button mat-flat-button>X</button>
+            </article>
+          </section>
+
+        </mat-card-content>
+
+
+
+      </mat-card>
+      }
+    </div>
+
+  </div>
+</div>
+}
