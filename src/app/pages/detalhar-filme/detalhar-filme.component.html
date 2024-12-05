@@ -1,10 +1,12 @@
+
+
 <section>
   <mat-card>
     <mat-card-header>
 
       <mat-card-title >
         <h2>
-          {{Filme.titulo}}
+          {{Filme.titulo.toString()}}
         </h2>
       </mat-card-title>
     </mat-card-header>
@@ -19,7 +21,7 @@
       <div>
         <h3>Cinemas que esté filme está disponível</h3>
       </div>
-      <button>X</button>
+      <button mat-flat-button (click)="OnEventListCinema(Filme.id)">X</button>
     </mat-card-footer>
 
   </mat-card>
