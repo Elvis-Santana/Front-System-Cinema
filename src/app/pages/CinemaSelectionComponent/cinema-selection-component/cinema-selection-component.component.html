@@ -1,0 +1,69 @@
+<div class="container-list-cinema-comprar">
+
+  <div class="list-cinema-comprar">
+    <div class="container-btn-close" (click)="OnEventExit()">
+      <button mat-icon-button>
+
+        <mat-icon>arrow_circle_left</mat-icon>
+      </button>
+
+
+    </div>
+    <div>
+
+      <section>
+        <form [formGroup]="form" class="form">
+
+          <mat-form-field>
+
+            <mat-select  (selectionChange)="OnEventSelect($event)">
+
+              @for (item of cinemas$|async; track $index) {
+              <mat-option [value]="item.Salas">{{item.name}}</mat-option>
+              }
+            </mat-select>
+
+
+          </mat-form-field>
+
+          <!-- <button mat-flat-button>ok</button> -->
+
+
+          <mat-form-field>
+
+            <mat-select (selectionChange)="OnEventSelectSessaos($event)">
+
+              @for (item of salas$|async; track $index) {
+              <mat-option [value]="item">{{item.name}}</mat-option>
+              }
+            </mat-select>
+
+
+          </mat-form-field>
+
+          <article class="container-sessao">
+            @for (item of sessaos$|async; track $index) {
+            <button mat-flat-button (click)="OnEventGetAssentos(item)">
+              Sessão das {{item.horaDoDia}} horas
+            </button>
+            }
+          </article>
+
+          <article class="container-assentos">
+            @for (item of assentos$|async; track $index) {
+            <button mat-fab [disabled]="item.ocupado">
+              {{item.numeroAssento}}
+
+            </button>
+            }
+          </article>
+
+        </form>
+      </section>
+
+
+    </div>
+
+
+  </div>
+</div>

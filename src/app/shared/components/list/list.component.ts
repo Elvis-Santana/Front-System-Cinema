@@ -13,7 +13,7 @@ import { ICinema } from '../../interfaces/ICinema.interface';
 import { CardCinemaComponent } from '../card/card-cinema/card-cinema.component';
 import { CardProdutoraComponent } from '../card/card-Produtora/cardProdutora.component';
 import { CarroselComponent } from '../carrosel/carrosel.component';
-import { CinemaSelectionComponentComponent } from '../CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
+import { CinemaSelectionComponentComponent } from '../../../pages/CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
 
 
 
@@ -31,7 +31,7 @@ import { CinemaSelectionComponentComponent } from '../CinemaSelectionComponent/c
     MatIconModule,
     CarroselComponent,
     MatCardModule,
-    CinemaSelectionComponentComponent
+    
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'

@@ -95,7 +95,61 @@
         },
 
         "Salas":[
+              {
+                "id": 8,
+                "id_cinema": 1,
+                "id_filme": 14,
+                "name": "sala",
+                "quantidadeDeAssentos": 5,
+                "quantidadeDeSessaos": 1,
+                "filme": {
+                  "id": 14,
+                  "id_produtora": 6,
+                  "titulo": "dsfdsf",
+                  "ano": "333",
+                  "imgPath": "Db\\\\c0b8e11b-bdc9-4bbe-b947-660951395019.png"
+                },
+                "sessaos":[
+                  {
+                    "id": 1,
+                    "sala_id": 8,
+                    "horaDoDia": "10:30"
+                  },
+                  {
+                    "id": 2,
+                    "sala_id": 8,
+                    "horaDoDia": "13:30"
+                  },
+                  {
+                    "id": 3,
+                    "sala_id": 8,
+                    "horaDoDia": "16:30"
+                  },
+                  {
+                    "id": 4,
+                    "sala_id": 8,
+                    "horaDoDia": "19:30"
+                  }
+                ]
+              },
+              {
+                "id": 7,
+                "id_cinema": 1,
+                "id_filme": 14,
+                "name": "sala+1",
+                "quantidadeDeAssentos": 5,
+                "quantidadeDeSessaos": 1,
+                "filme": {
+                  "id": 14,
+                  "id_produtora": 6,
+                  "titulo": "dsfdsf",
+                  "ano": "333",
+                  "imgPath": "Db\\\\c0b8e11b-bdc9-4bbe-b947-660951395019.png"
+                },
+                "sessaos":[
 
+                ]
+              }
         ],
 
         "filmes_Em_Cartaz":[
@@ -168,7 +222,100 @@
         ]
       }
 
-  ]
+  ],
 
+  "Sessao":[
+    {
+      "id": 1,
+      "sala_id": 8,
+      "horaDoDia": "10:30",
+      "assentos":[
+        {
+          "id": 5,
+          "sessao_id": 1,
+          "ocupado": false,
+          "numeroAssento": 5
+        },
+        {
+          "id": 4,
+          "sessao_id": 1,
+          "ocupado": false,
+          "numeroAssento": 4
+        },
+        {
+          "id": 3,
+          "sessao_id": 1,
+          "ocupado": false,
+          "numeroAssento": 3
+        },
+        {
+          "id": 2,
+          "sessao_id": 1,
+          "ocupado": false,
+          "numeroAssento": 2
+        },
+        {
+          "id": 1,
+          "sessao_id": 1,
+          "ocupado": true,
+          "numeroAssento": 1
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "sala_id": 8,
+      "horaDoDia": "13:30",
+      "assentos":[]
+    },
+    {
+      "id": 3,
+      "sala_id": 8,
+      "horaDoDia": "16:30",
+      "assentos":[]
+
+    },
+    {
+      "id": 4,
+      "sala_id": 8,
+      "horaDoDia": "19:30",
+      "assentos":[]
+
+    }
+
+  ],
+
+  "Assento":[
+    {
+      "id": 5,
+      "sessao_id": 1,
+      "ocupado": false,
+      "numeroAssento": 5
+    },
+    {
+      "id": 4,
+      "sessao_id": 1,
+      "ocupado": false,
+      "numeroAssento": 4
+    },
+    {
+      "id": 3,
+      "sessao_id": 1,
+      "ocupado": false,
+      "numeroAssento": 3
+    },
+    {
+      "id": 2,
+      "sessao_id": 1,
+      "ocupado": false,
+      "numeroAssento": 2
+    },
+    {
+      "id": 1,
+      "sessao_id": 1,
+      "ocupado": false,
+      "numeroAssento": 1
+    }
+  ]
 }
 

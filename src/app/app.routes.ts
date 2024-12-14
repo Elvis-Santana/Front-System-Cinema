@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/conta/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ContaComponent } from './pages/conta/conta.component';
 import { authGuard } from './Auth/auth.guard';
+import { CinemaSelectionComponentComponent } from './pages/CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
 
 export const routes: Routes = [
 
@@ -14,6 +15,7 @@ export const routes: Routes = [
    // canActivate:[authGuard],
     component: HomeComponent,
     children: [
+
       {
         path: '',
         component: ListComponent,
@@ -40,7 +42,13 @@ export const routes: Routes = [
         component: DetalharFilmeComponent
       },
 
+      {
+        path:"selecionar-cinema/:id",
+        component:CinemaSelectionComponentComponent
+      }
+
     ]
+
 
   },
 

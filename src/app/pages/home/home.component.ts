@@ -5,7 +5,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../header/header.component';
-import { CinemaSelectionComponentComponent } from '../../shared/components/CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
+import { CinemaSelectionComponentComponent } from '../CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +18,6 @@ import { CinemaSelectionComponentComponent } from '../../shared/components/Cinem
     RouterOutlet,
     RouterModule,
     HeaderComponent,
-    CinemaSelectionComponentComponent
     ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

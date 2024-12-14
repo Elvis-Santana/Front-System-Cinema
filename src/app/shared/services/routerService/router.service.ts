@@ -19,6 +19,8 @@ export class RouterService {
 
   public nav=(url:String)=> this.router.navigate([url]);
 
+  public Router=()=> this.router;
+
 
 
 

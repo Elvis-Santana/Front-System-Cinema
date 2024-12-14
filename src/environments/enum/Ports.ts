@@ -37,6 +37,9 @@ declare const PORT_FILMES_JSON: String;
 declare const PORT_PRODUTORA: String;
 declare const PORT_PRODUTORA_JSON: String;
 
+declare const PORT_SESSAO: String;
+declare const PORT_SESSAO_JSON: String;
+
 export const _PORTFILMES: IPortFilmesUrl = {
   production: {
     API: PORT_FILMES,
@@ -69,3 +72,16 @@ export const _PORTPRODUTORA: IPortFilmesUrl = {
   },
   default: PORT_PRODUTORA
 }
+
+const _PORTSESSAO: IPortFilmesUrl = {
+
+  production: {
+    API: PORT_SESSAO,
+  },
+  development: {
+    API: PORT_SESSAO,
+    JOSN: PORT_SESSAO_JSON
+  },
+  default: PORT_SESSAO
+}
+

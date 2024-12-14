@@ -1,5 +1,6 @@
 import { IFilme } from "./Filme.interface";
 import { IUser } from "./IUser.interface";
+import { ISala } from "./Sala.interface";
 
 
 
@@ -9,7 +10,7 @@ export interface ICinema{
   name :String,
   precoDoIngresso:number,
   Administrador :IUser
-  //  Salas { get; set; } = new();
+  Salas :ISala[],
     filmes_Em_Cartaz :IFilme[]
   //   Employees { get; set; } = new();
 }

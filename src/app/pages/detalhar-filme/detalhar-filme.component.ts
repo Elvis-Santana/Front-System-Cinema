@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { _PORTCINEMA, _PORTFILMES } from '../../../environments/enum/Ports';
 import { RouterService } from '../../shared/services/routerService/router.service';
 import { ICinema } from '../../shared/interfaces/ICinema.interface';
-import { CinemaSelectionComponentComponent } from '../../shared/components/CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
+import { CinemaSelectionComponentComponent } from '../CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
 import { CinemaSelectionComponentComponetService } from '../../shared/services/CinemaSelectionComponentComponetService/cinema-selection-component-componet.service';
 
 
@@ -29,7 +29,7 @@ export class DetalharFilmeComponent implements OnInit {
 
   protected http = inject(RouterService).getHttpClient();
   protected activatedRoute = inject(ActivatedRoute);
-  protected CinemaSelectionComponentComponetService = inject(CinemaSelectionComponentComponetService);
+  protected routerService = inject(RouterService);
 
   protected Filme !: IFilme;
   protected Cinemas !: ICinema[];
@@ -52,8 +52,7 @@ export class DetalharFilmeComponent implements OnInit {
     }
   }
   public OnEventListCinema(id:Number){
-    this.CinemaSelectionComponentComponetService.OnEventGetCinemasForMovie(id);
-    this.CinemaSelectionComponentComponetService.OnShowSelectionCinemaOpen()
+   this.routerService.nav(`selecionar-cinema/${id}`);
   }
 
 }

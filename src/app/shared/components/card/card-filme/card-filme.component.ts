@@ -24,15 +24,14 @@ export class CardFilmeComponent {
   @Input() Filme!: IFilme;
 
   protected router = inject(RouterService);
-  protected CinemaSelectionComponentComponetService = inject(CinemaSelectionComponentComponetService);
+  protected routerService = inject(RouterService);
 
 
   public OnEventDetanhar = (filme: IFilme) => this.router.nav(`filme/detalhar/${filme.id}`)
 
 
   public OnEventListCinema(id:Number){
-    this.CinemaSelectionComponentComponetService.OnEventGetCinemasForMovie(id);
-    this.CinemaSelectionComponentComponetService.OnShowSelectionCinemaOpen()
+    this.routerService.nav(`selecionar-cinema/${id}`);
   }
 
 }

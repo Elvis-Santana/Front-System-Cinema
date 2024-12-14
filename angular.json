@@ -67,8 +67,9 @@
 
                 "PORT_FILMES_JSON":"'http://localhost:3000/Filme'",
                 "PORT_CINEMA_JSON":"'http://localhost:3000/Cinema'",
-                "PORT_PRODUTORA_JSON":"'http://localhost:3000/Produtora'"
-
+                "PORT_PRODUTORA_JSON":"'http://localhost:3000/Produtora'",
+                "PORT_SESSAO_JSON":"'http://localhost:3000/Sessao'",
+                "PORT_ASSENTO_JSON":"'http://localhost:3000/Assento'"
 
               },
               "optimization": false,
