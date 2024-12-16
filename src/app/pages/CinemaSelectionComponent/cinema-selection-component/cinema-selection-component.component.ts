@@ -1,20 +1,20 @@
-import { Component, ElementRef, EventEmitter, inject, NgModule, OnInit, ViewChild, viewChild, ViewRef } from '@angular/core';
+import { Component, inject, OnInit, ViewChild, viewChild, ViewRef } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CinemaSelectionComponentComponetService } from '../../../shared/services/CinemaSelectionComponentComponetService/cinema-selection-component-componet.service';
 import { ICinema } from '../../../shared/interfaces/ICinema.interface';
-import { MatButtonModule, MatIconButton } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ActivatedRoute, Router } from '@angular/router';
-import { RouterService } from '../../../shared/services/routerService/router.service';
-import { ISala, sessaosIds } from '../../../shared/interfaces/Sala.interface';
-import { map, Observable, of, timestamp, } from 'rxjs';
-import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { ISala } from '../../../shared/interfaces/Sala.interface';
+import { fromEvent, map, Observable, of, } from 'rxjs';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SessaoService } from '../../../shared/services/Sessao-cinema-Service/sessao.service';
 import { ISessao } from '../../../shared/interfaces/Sessao.interface';
 import { IAssento } from '../../../shared/interfaces/Assento.interface';
 import { CommonModule } from '@angular/common';
+import { AssentoService } from '../../../shared/services/Assento-service/assento.service';
 
 @Component({
   selector: 'app-cinema-selection-component',
@@ -38,49 +38,45 @@ export class CinemaSelectionComponentComponent implements OnInit {
   public CinemaSelectionComponentComponetService = inject(CinemaSelectionComponentComponetService);
   protected activatedRoute = inject(ActivatedRoute);
   protected sessaoService = inject(SessaoService);
+  protected assentoService = inject(AssentoService);
 
   protected cinemas$: Observable<ICinema[]> = new Observable();
-
   protected salas$: Observable<ISala[]> = new Observable()
-
   protected sessaos$: Observable<ISessao[]> = new Observable();
-
   protected assentos$: Observable<IAssento[]> = new Observable();
 
-  protected form!: FormGroup;
+  protected form: FormGroup = new FormGroup(
+    {
+      time: new FormControl<string | null>("")
+    }
+  );
 
   async ngOnInit() {
-
-    this.form = new FormGroup(
-      {
-        time: new FormControl("")
-      }
-    );
-
 
     this.getCinemaSelection();
 
   }
 
   public getCinemaSelection() {
-    const id = this.activatedRoute.snapshot.paramMap.get("id");
-    if (!id) {
+    const id: Number = Number(this.activatedRoute.snapshot.paramMap.get("id")) ?? null;
+    if (!id || id === null) {
       this.cinemas$ = of([]);
       return;
     }
+
 
     this.cinemas$ = this.CinemaSelectionComponentComponetService.GetCinemasForMovie(Number(id));
 
   }
 
   public OnEventSelect(salas: MatSelectChange) {
+    const salasConvent = salas.value as ISala[];
 
-    if (!salas.value) {
+    if (!salasConvent) {
       this.salas$ = of([])
       return;
     }
 
-    const salasConvent = salas.value as ISala[];
     this.salas$ = of(salasConvent);
   }
 
@@ -97,13 +93,15 @@ export class CinemaSelectionComponentComponent implements OnInit {
 
 
   public async OnEventSelectSessaos(salas: MatSelectChange) {
-    if (((salas.value as ISala).sessaos).length === 0) {
-      this.sessaos$ = of([]);
-      console.error("sessaos não encontradas")
+    const salasConvent = salas.value as ISala;
 
+
+       if (salasConvent.sessaos.length === 0) {
+      this.sessaos$ = of([]);
+      this.assentos$ = of([]);
+      console.error("sessaos não encontradas")
       return;
     }
-    const salasConvent = salas.value as ISala;
     this.sessaos$ = of(salasConvent.sessaos || [])
 
   }
@@ -116,8 +114,8 @@ export class CinemaSelectionComponentComponent implements OnInit {
       console.error("sesssao null")
       return;
     }
-    this.assentos$ = (this.sessaoService.GetSessaoById(sesssao.id))
-      .pipe(map((response) => response.assentos));
+    this.assentos$ = (this.assentoService.GetAssentoAndSessao(sesssao.id))
+
   }
 
 }

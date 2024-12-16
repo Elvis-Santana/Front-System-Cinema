@@ -73,15 +73,15 @@ export const _PORTPRODUTORA: IPortFilmesUrl = {
   default: PORT_PRODUTORA
 }
 
-const _PORTSESSAO: IPortFilmesUrl = {
+// const _PORTSESSAO: IPortFilmesUrl = {
 
-  production: {
-    API: PORT_SESSAO,
-  },
-  development: {
-    API: PORT_SESSAO,
-    JOSN: PORT_SESSAO_JSON
-  },
-  default: PORT_SESSAO
-}
+//   production: {
+//     API: PORT_SESSAO,
+//   },
+//   development: {
+//     API: PORT_SESSAO,
+//     JOSN: PORT_SESSAO_JSON
+//   },
+//   default: PORT_SESSAO
+// }
 
