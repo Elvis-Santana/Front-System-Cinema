@@ -48,4 +48,9 @@ export class ListService {
     )
   }
 
+  public TESTE_TokenInterceptor(){
+    this.http.get("https://localhost:7100/api/Login/TESTE-cliente",{responseType:"text"})
+
+    .subscribe(e => console.log(e))
+  }
 }

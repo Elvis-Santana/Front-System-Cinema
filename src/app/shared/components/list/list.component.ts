@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, inject, signal } from '@angular/core';
 import { ListService } from '../../services/listService/list.service';
 import { IProdutora } from '../../interfaces/Produtora.interface';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { IFilme } from '../../interfaces/Filme.interface';
@@ -31,7 +31,7 @@ import { CinemaSelectionComponentComponent } from '../../../pages/CinemaSelectio
     MatIconModule,
     CarroselComponent,
     MatCardModule,
-    
+
   ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
@@ -52,9 +52,12 @@ export class ListComponent implements OnInit {
   protected router = inject(Router);
   protected PalavrasReservadas = PalavrasReservadas;
   protected url: string = "";
+  public httpClient =inject(HttpClient)
 
   async ngOnInit() {
 
+
+    this.listService.TESTE_TokenInterceptor()
     await this.loadFilmes();
     await this.loadProdutoras();
     await this.loadCinema();
