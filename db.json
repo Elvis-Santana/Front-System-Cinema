@@ -147,6 +147,11 @@
                   "imgPath": "Db\\\\c0b8e11b-bdc9-4bbe-b947-660951395019.png"
                 },
                 "sessaos":[
+                  {
+                    "id": 5,
+                    "sala_id": 7,
+                    "horaDoDia": "10:30"
+                  }
 
                 ]
               }
@@ -281,11 +286,42 @@
       "horaDoDia": "19:30",
       "assentos":[]
 
+    },
+    {
+      "id": 5,
+      "sala_id": 8,
+      "horaDoDia": "19:30",
+      "assentos":[
+        {
+          "id": 7,
+          "sessao_id": 5,
+          "ocupado": true,
+          "numeroAssento": 2
+        },
+        {
+          "id": 6,
+          "sessao_id": 5,
+          "ocupado": false,
+          "numeroAssento": 1
+        }
+      ]
     }
 
   ],
 
   "Assento":[
+    {
+      "id": 7,
+      "sessao_id": 5,
+      "ocupado": true,
+      "numeroAssento": 2
+    },
+    {
+      "id": 6,
+      "sessao_id": 5,
+      "ocupado": false,
+      "numeroAssento": 1
+    },
     {
       "id": 5,
       "sessao_id": 1,

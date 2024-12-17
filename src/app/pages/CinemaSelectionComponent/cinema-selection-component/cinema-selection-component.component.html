@@ -1,5 +1,4 @@
 <div class="container-list-cinema-comprar">
-
   <div class="list-cinema-comprar">
     <div class="container-btn-close" (click)="OnEventExit()">
       <button mat-icon-button>
@@ -16,10 +15,10 @@
 
           <mat-form-field>
 
-            <mat-select  (selectionChange)="OnEventSelect($event)">
+            <mat-select  (selectionChange)="OnEventSelectCinemaInSalas($event)" formControlName="selectCinema">
 
               @for (item of cinemas$|async; track $index) {
-              <mat-option [value]="item.Salas">{{item.name}}</mat-option>
+              <mat-option [value]="item">{{item.name}}</mat-option>
               }
             </mat-select>
 
@@ -31,7 +30,7 @@
 
           <mat-form-field>
 
-            <mat-select (selectionChange)="OnEventSelectSessaos($event)">
+            <mat-select (selectionChange)="OnEventSelectSalaInSessaos($event)" formControlName="selectSala">
 
               @for (item of salas$|async; track $index) {
               <mat-option [value]="item">{{item.name}}</mat-option>
@@ -43,7 +42,7 @@
 
           <article class="container-sessao">
             @for (item of sessaos$|async; track $index) {
-            <button mat-flat-button (click)="OnEventGetAssentos(item)">
+            <button mat-flat-button (click)="OnEventGetAssentosInSessao(item)">
               Sessão das {{item.horaDoDia}} horas
             </button>
             }
@@ -53,13 +52,13 @@
             @for (item of assentos$|async; track $index) {
             <button mat-fab [disabled]="item.ocupado">
               {{item.numeroAssento}}
-
             </button>
             }
           </article>
 
         </form>
       </section>
+
 
 
     </div>
