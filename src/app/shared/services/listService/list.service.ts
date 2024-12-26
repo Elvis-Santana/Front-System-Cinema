@@ -42,7 +42,6 @@ export class ListService {
   public async CinemaFilme(): Promise<Observable<ICinema[]>> {
     return this.http.get<ICinema[]>(String(this.PORT_CINEMA.development.JOSN)).pipe(
       map((res: ICinema[]) => {
-            //console.log(res);
         return res;
       })
     )
@@ -50,7 +49,6 @@ export class ListService {
 
   public TESTE_TokenInterceptor(){
     this.http.get("https://localhost:7100/api/Login/TESTE-cliente",{responseType:"text"})
-
     .subscribe(e => console.log(e))
   }
 }

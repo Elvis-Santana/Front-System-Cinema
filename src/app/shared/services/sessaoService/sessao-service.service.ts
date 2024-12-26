@@ -21,11 +21,11 @@ import { RouterService } from '../routerService/router.service';
 export class SessaoServiceService {
   protected http = inject(HttpClient);
   protected router = inject(RouterService);
+
   constructor() { }
 
 
   public async criarConta(data: IUser) {
-
     this.http.post<IUser>(Ports.Api_CSharp_UsuarioClinet, data).subscribe((e) => {
       console.log(e);
     })
