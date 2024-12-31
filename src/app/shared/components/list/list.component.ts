@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren, inject, signal } from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren, inject, signal } from '@angular/core';
 import { ListService } from '../../services/listService/list.service';
 import { IProdutora } from '../../interfaces/Produtora.interface';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -36,66 +36,38 @@ import { CinemaSelectionComponentComponent } from '../../../pages/CinemaSelectio
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit ,OnDestroy {
+
 
 
   @ViewChild('scrollbar') RefInput!: ElementRef;
   @ViewChildren('items') items!: QueryList<ElementRef>;
 
   protected element!: ElementRef[];
-  protected produtorasSignal = signal<IProdutora[]>([]);
-  protected filmesSignal = signal<IFilme[]>([]);
-  protected cinemasSignal = signal<ICinema[]>([]);
-
-
   protected listService = inject(ListService);
+
+  protected Produtoras$ = this.listService.ObGetProdutora();
+  protected Filmes$ = this.listService.ObGetFilme();
+  protected Cinemas$ = this.listService.ObGetCinema();
+
+
   protected router = inject(Router);
   protected PalavrasReservadas = PalavrasReservadas;
   protected url: string = "";
-  public httpClient =inject(HttpClient)
+  public httpClient = inject(HttpClient)
 
   async ngOnInit() {
 
-
-    this.listService.TESTE_TokenInterceptor()
-    await this.loadFilmes();
-    await this.loadProdutoras();
-    await this.loadCinema();
+    this.listService.GetProdutora()
+    this.listService.GetFilme()
+    this.listService.GetCinema()
 
     this.url = (this.router.url.slice(1,));
-    if (!this.url) {
-
-    }
-
-
-
   }
 
-  async loadCinema(){
-      (await this.listService.CinemaFilme())
-      .subscribe((data)=>{
-        this.cinemasSignal.set(data)
-      })
+  ngOnDestroy(): void {
+    this.listService.OnDestroy()
   }
-
-  async loadProdutoras() {
-    (await this.listService.GetProdutora()).subscribe((data) => {
-      this.produtorasSignal.set(data)
-
-    })
-
-  }
-
-  async loadFilmes() {
-    (await this.listService.GetFilme()).subscribe((data) => {
-      this.filmesSignal.set(data)
-
-      const imgs: String[] = data.map(e => e.imgPath);
-    })
-
-  }
-
-
 }
 
 

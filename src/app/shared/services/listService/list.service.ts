@@ -1,9 +1,9 @@
-import { Injectable, inject } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Injectable, OnInit, inject } from '@angular/core';
+import { Observable, BehaviorSubject, map, Subject, takeUntil } from 'rxjs';
 import { IProdutora } from '../../interfaces/Produtora.interface';
 import { IFilme } from '../../interfaces/Filme.interface';
 import { ICinema } from '../../interfaces/ICinema.interface';
-import {  _PORTFILMES,  _PORTCINEMA,_PORTPRODUTORA } from '../../../../environments/enum/Ports';
+import { _PORTFILMES, _PORTCINEMA, _PORTPRODUTORA } from '../../../../environments/enum/Ports';
 import { RouterService } from '../routerService/router.service';
 
 
@@ -18,37 +18,66 @@ export class ListService {
   private PORT_CINEMA = _PORTCINEMA;
   private PORT_PRODUTORA = _PORTPRODUTORA;
 
+  private Produtora$ = new BehaviorSubject<IProdutora[]>([]);
+  private Filme$ = new BehaviorSubject<IFilme[]>([]);
+  private Cinema$ = new BehaviorSubject<ICinema[]>([]);
+
+  private ProdutoraDestroy$ = new Subject<void>();
+  private FilmeDestroy$ = new Subject<void>();
+  private CinemaDestroy$ = new Subject<void>();
 
   protected http = inject(RouterService).getHttpClient();
-  constructor() { }
+  public ObGetProdutora = () => this.Produtora$.asObservable();
+  public ObGetFilme = () => this.Filme$.asObservable();
+  public ObGetCinema = () => this.Cinema$.asObservable();
 
-  public async GetProdutora(): Promise<Observable<IProdutora[]>> {
-    return this.http.get<IProdutora[]>(String(this.PORT_PRODUTORA.development.JOSN)).pipe(
-      map((res: IProdutora[]) => {
-        return res;
-      })
-    )
+
+
+
+  public GetProdutora() {
+    this.http.get<IProdutora[]>(String(this.PORT_PRODUTORA.development.JOSN)).pipe(
+      takeUntil(this.ProdutoraDestroy$),
+      map((res: IProdutora[]) => res)
+    ).subscribe(e => this.Produtora$.next(e))
   }
-  public async GetFilme(): Promise<Observable<IFilme[]>> {
+  public GetFilme() {
 
-    return this.http.get<IFilme[]>(String(this.PORT_FILMES.development.JOSN)).pipe(
+    this.http.get<IFilme[]>(String(this.PORT_FILMES.development.JOSN)).pipe(
+      takeUntil(this.FilmeDestroy$),
       map((res: IFilme[]) => {
         return res;
 
       })
-    )
+    ).subscribe(e => this.Filme$.next(e))
   }
 
-  public async CinemaFilme(): Promise<Observable<ICinema[]>> {
-    return this.http.get<ICinema[]>(String(this.PORT_CINEMA.development.JOSN)).pipe(
+
+  public GetCinema() {
+    this.http.get<ICinema[]>(String(this.PORT_CINEMA.development.JOSN)).pipe(
+      takeUntil(this.CinemaDestroy$),
       map((res: ICinema[]) => {
         return res;
       })
-    )
+    ).subscribe(e => this.Cinema$.next(e))
   }
 
-  public TESTE_TokenInterceptor(){
-    this.http.get("https://localhost:7100/api/Login/TESTE-cliente",{responseType:"text"})
-    .subscribe(e => console.log(e))
+
+  public TESTE_TokenInterceptor() {
+    this.http.get("https://localhost:7100/api/Login/TESTE-cliente", { responseType: "text" })
+      .subscribe(e => console.log(e))
+  }
+
+  public OnDestroy() {
+
+    this.ProdutoraDestroy$.next();
+    this.ProdutoraDestroy$.complete();
+
+    this.FilmeDestroy$.next();
+    this.FilmeDestroy$.complete();
+
+
+    this.CinemaDestroy$.next();
+    this.CinemaDestroy$.complete();
+
   }
 }
