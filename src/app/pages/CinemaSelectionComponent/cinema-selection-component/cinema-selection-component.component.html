@@ -25,7 +25,6 @@
 
           </mat-form-field>
 
-          <!-- <button mat-flat-button>ok</button> -->
 
 
           <mat-form-field>
@@ -49,11 +48,18 @@
           </article>
 
           <article class="container-assentos">
-            @for (item of assentos$|async; track $index) {
-            <button mat-fab [disabled]="item.ocupado">
-              {{item.numeroAssento}}
-            </button>
-            }
+            @for (assento of assentos$|async; track $index) {
+
+              @for (assentoOp of assento.AssentoOcupado; track $index) {
+
+                  <button mat-fab [disabled]="assentoOp.ocupado" >
+                    {{assento.numeroAssento}}
+                  </button>
+
+               }
+              }
+
+
           </article>
 
         </form>
