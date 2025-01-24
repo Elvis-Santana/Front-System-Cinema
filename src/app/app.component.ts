@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, inject, Inject, OnInit } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatListModule } from "@angular/material/list"
 import { MatButtonModule } from "@angular/material/button"
@@ -22,10 +22,14 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent   {
+export class AppComponent implements OnInit  {
+
   title = 'Front-System-Cinema';
+ 
 
+  ngOnInit(): void {
 
+  }
 
 
 }

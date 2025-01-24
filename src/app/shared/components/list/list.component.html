@@ -17,7 +17,7 @@
   @case (PalavrasReservadas.FILME) {
   <div class="conatiner-list-filme">
     @for (f of Filmes$|async ; track $index) {
-    <app-card-filme [Filme]="f"></app-card-filme>
+    <app-card-filme (eventComparar)="OnEventVanegationFilme($event)" [filme]="f"></app-card-filme>
 
     }
 
@@ -28,7 +28,7 @@
   <div class="container-list-cinema">
     @for (c of Cinemas$|async ; track $index) {
 
-    <app-card-cinema [Cinema]=c></app-card-cinema>
+    <app-card-cinema [cinema]=c></app-card-cinema>
 
 
     }
@@ -46,7 +46,7 @@
 
   <div class="conatiner-list-filme">
     @for (f of Filmes$|async ; track $index) {
-    <app-card-filme [Filme]="f"></app-card-filme>
+      <app-card-filme (eventComparar)="OnEventVanegationFilme($event)" [filme]="f"></app-card-filme>
 
     }
 

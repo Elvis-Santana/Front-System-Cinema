@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,23 +15,25 @@ import { CinemaSelectionComponentComponetService } from '../../../services/Cinem
     MatButtonModule,
     MatIconModule,
     RouterModule,
-    RouterOutlet
   ],
   templateUrl: './card-filme.component.html',
   styleUrl: './card-filme.component.scss'
 })
 export class CardFilmeComponent {
-  @Input() Filme!: IFilme;
+
+  @Output() eventComparar: EventEmitter<IFilme> = new EventEmitter<IFilme>()
+  @Input() filme!: IFilme;
 
   protected router = inject(RouterService);
-  protected routerService = inject(RouterService);
 
 
-  public OnEventDetanhar = (filme: IFilme) => this.router.nav(`filme/detalhar/${filme.id}`)
+  public onEventDetanhar = (filme: IFilme) => this.router.nav(`filme/detalhar/${filme.id}`)
 
 
-  public OnEventListCinema(id:Number){
-    this.routerService.nav(`selecionar-cinema/${id}`);
+  public onEventListCinema(filme: IFilme) {
+    this.eventComparar.emit(filme);
   }
+
+
 
 }

@@ -9,6 +9,7 @@ import { RouterService } from '../../../shared/services/routerService/router.ser
 import { Ports } from '../../../../environments/enum/Ports';
 import { HttpClient } from '@angular/common/http';
 import { SessaoServiceService } from '../../../shared/services/sessaoService/sessao-service.service';
+import { of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-criar-conta-usuario',
@@ -27,19 +28,26 @@ export class CriarContaUsuarioComponent implements OnInit {
   protected sessaoServiceService = inject(SessaoServiceService);
 
 
+
   protected form !: FormGroup
+
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      name: new FormControl<String>(''),
+       name: new FormControl<String>(''),
       email: new FormControl<String>(''),
       password: new FormControl<String>(''),
       role: new FormControl<String>('')
 
     })
+
+
+
   }
 
+
   public async emitir() {
+
     const data = (this.form.value as IUser);
   //  await this.sessaoServiceService.criarConta(data);
   }

@@ -1,357 +1,167 @@
 {
-  "Produtora":[
-    {
-      "id":1,
-      "nome":"cavalos produtora",
-      "filmes":[
-        {
-          "id":1,
-          "id_produtora":1,
-          "titulo":"cavalos",
-          "ano":"20/02/2023",
-          "imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"
-        },
-
-        {
-          "id":2,
-          "id_produtora":1,
-          "titulo":"cavalos 2. a vingaca ",
-          "ano":"20/02/2024",
-          "imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"
-        },
-        {
-          "id":3,
-          "id_produtora":1,
-          "titulo":"cavalos 3. a revolta ",
-          "ano":"20/02/2029",
-          "imgPath":"https://bubblegeek.com.br/media/O%20Cara%20da%20Piscina_P%C3%83%C2%B4ster_Diamond%20Films.jpg"
-        }
-      ]
-    },
-    {
-      "id":2,
-      "nome":"a produtora",
-      "filmes":[
-        {
-          "id":4,
-          "id_produtora":2,
-          "titulo":" Oppenheimer ",
-          "ano":"20/06/2023",
-          "imgPath":"https://a-static.mlcdn.com.br/800x560/poster-cartaz-oppenheimer-c-pop-arte-poster/poparteskins2/pos-03405-30x45cm/5c48f3fe2d8a43adaa5a3a731b8b9f31.jpeg"
-        }
-      ]
-    }
-  ],
-
-  "Filme":[
-    {
-      "id":1,
-      "id_produtora":1,
-      "titulo":"cavalos",
-      "ano":"20/02/2023",
-      "imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"
-    },
-
-    {
-      "id":2,
-      "id_produtora":1,
-      "titulo":"cavalos 2. a vingaca ",
-      "ano":"20/02/2024",
-      "imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"
-    },
-
-    {
-      "id":3,
-      "id_produtora":1,
-      "titulo":"cavalos 3. a revolta ",
-      "ano":"20/02/2029",
-      "imgPath":"https://bubblegeek.com.br/media/O%20Cara%20da%20Piscina_P%C3%83%C2%B4ster_Diamond%20Films.jpg"
-    },
-    {
-      "id":4,
-      "id_produtora":2,
-      "titulo":" Oppenheimer ",
-      "ano":"20/06/2023",
-      "imgPath":"https://a-static.mlcdn.com.br/800x560/poster-cartaz-oppenheimer-c-pop-arte-poster/poparteskins2/pos-03405-30x45cm/5c48f3fe2d8a43adaa5a3a731b8b9f31.jpeg"
-    }
-
-
-
-  ],
-
-
-  "Cinema":[
+  "Produtora": [
       {
-        "id":1,
-        "idAdministrador":2,
-        "name":"cinema",
-
-        "Administrador":{
-          "id": 2,
-          "name": "elvis",
-          "email": "Elvis@gmail.com",
-          "role": "cinema_administrador"
-
-        },
-
-        "Salas":[
+          "id": 1,
+          "nome": "cavalos produtora",
+          "filmes": [
               {
-                "id": 8,
-                "id_cinema": 1,
-                "id_filme": 14,
-                "name": "sala",
-                "quantidadeDeAssentos": 5,
-                "quantidadeDeSessaos": 1,
-                "filme": {
-                  "id": 14,
-                  "id_produtora": 6,
-                  "titulo": "dsfdsf",
-                  "ano": "333",
-                  "imgPath": "Db\\\\c0b8e11b-bdc9-4bbe-b947-660951395019.png"
-                },
-                "sessaos":[
-                  {
-                    "id": 1,
-                    "sala_id": 8,
-                    "horaDoDia": "10:30"
-                  },
-                  {
-                    "id": 2,
-                    "sala_id": 8,
-                    "horaDoDia": "13:30"
-                  },
-                  {
-                    "id": 3,
-                    "sala_id": 8,
-                    "horaDoDia": "16:30"
-                  },
-                  {
-                    "id": 4,
-                    "sala_id": 8,
-                    "horaDoDia": "19:30"
-                  }
-                ]
+                  "id": 1,
+                  "id_produtora": 1,
+                  "titulo": "cavalos",
+                  "ano": "20/02/2023",
+                  "imgPath": "https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"
               },
               {
-                "id": 7,
-                "id_cinema": 1,
-                "id_filme": 14,
-                "name": "sala+1",
-                "quantidadeDeAssentos": 5,
-                "quantidadeDeSessaos": 1,
-                "filme": {
-                  "id": 14,
-                  "id_produtora": 6,
-                  "titulo": "dsfdsf",
-                  "ano": "333",
-                  "imgPath": "Db\\\\c0b8e11b-bdc9-4bbe-b947-660951395019.png"
-                },
-                "sessaos":[
-                  {
-                    "id": 5,
-                    "sala_id": 7,
-                    "horaDoDia": "10:30"
-                  }
-
-                ]
+                  "id": 2,
+                  "id_produtora": 1,
+                  "titulo": "cavalos 2. a vingaca",
+                  "ano": "20/02/2024",
+                  "imgPath": "https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"
+              },
+              {
+                  "id": 3,
+                  "id_produtora": 1,
+                  "titulo": "cavalos 3. a revolta",
+                  "ano": "20/02/2029",
+                  "imgPath": "https://bubblegeek.com.br/media/O%20Cara%20da%20Piscina_P%C3%83%C2%B4ster_Diamond%20Films.jpg"
               }
-        ],
-
-        "filmes_Em_Cartaz":[
-          {
-            "id":1,
-            "id_produtora":1,
-            "titulo":"cavalos",
-            "ano":"20/02/2023",
-            "imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"
-          },
-
-          {
-            "id":2,
-            "id_produtora":1,
-            "titulo":"cavalos 2. a vingaca ",
-            "ano":"20/02/2024",
-            "imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"
-          }
-        ],
-
-        "Employees":[
-
-        ]
+          ]
       },
-
       {
-        "id":2,
-        "idAdministrador":2,
-        "name":"cinema_2",
-
-        "Administrador":{
           "id": 2,
-          "name": "elvis",
-          "email": "Elvis@gmail.com",
-          "role": "cinema_administrador"
-
-        },
-
-        "Salas":[
-
-        ],
-
-        "filmes_Em_Cartaz":[
-          {
-            "id":1,
-            "id_produtora":1,
-            "titulo":"cavalos",
-            "ano":"20/02/2023",
-            "imgPath":"https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg"
-          },
-
-          {
-            "id":2,
-            "id_produtora":1,
-            "titulo":"cavalos 2. a vingaca ",
-            "ano":"20/02/2024",
-            "imgPath":"https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg"
-          },
-          {
-            "id":4,
-            "id_produtora":2,
-            "titulo":" Oppenheimer ",
-            "ano":"20/06/2023",
-            "imgPath":"https://a-static.mlcdn.com.br/800x560/poster-cartaz-oppenheimer-c-pop-arte-poster/poparteskins2/pos-03405-30x45cm/5c48f3fe2d8a43adaa5a3a731b8b9f31.jpeg"
-          }
-        ],
-
-        "Employees":[
-
-        ]
+          "nome": "a produtora",
+          "filmes": [
+              {
+                  "id": 4,
+                  "id_produtora": 2,
+                  "titulo": "Oppenheimer",
+                  "ano": "20/06/2023",
+                  "imgPath": "https://a-static.mlcdn.com.br/800x560/poster-cartaz-oppenheimer-c-pop-arte-poster/poparteskins2/pos-03405-30x45cm/5c48f3fe2d8a43adaa5a3a731b8b9f31.jpeg"
+              }
+          ]
       }
-
   ],
-
-  "Sessao":[
-    {
-      "id": 1,
-      "sala_id": 8,
-      "horaDoDia": "10:30",
-      "assentos":[
-        {
-          "id": 5,
-          "sessao_id": 1,
-          "ocupado": false,
-          "numeroAssento": 5
-        },
-        {
-          "id": 4,
-          "sessao_id": 1,
-          "ocupado": false,
-          "numeroAssento": 4
-        },
-        {
-          "id": 3,
-          "sessao_id": 1,
-          "ocupado": false,
-          "numeroAssento": 3
-        },
-        {
-          "id": 2,
-          "sessao_id": 1,
-          "ocupado": false,
-          "numeroAssento": 2
-        },
-        {
+  "Filme": [
+      { "id": 1, "id_produtora": 1, "titulo": "cavalos", "ano": "20/02/2023", "imgPath": "https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg" },
+      { "id": 2, "id_produtora": 1, "titulo": "cavalos 2. a vingaca", "ano": "20/02/2024", "imgPath": "https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg" },
+      { "id": 3, "id_produtora": 1, "titulo": "cavalos 3. a revolta", "ano": "20/02/2029", "imgPath": "https://bubblegeek.com.br/media/O%20Cara%20da%20Piscina_P%C3%83%C2%B4ster_Diamond%20Films.jpg" },
+      { "id": 4, "id_produtora": 2, "titulo": "Oppenheimer", "ano": "20/06/2023", "imgPath": "https://a-static.mlcdn.com.br/800x560/poster-cartaz-oppenheimer-c-pop-arte-poster/poparteskins2/pos-03405-30x45cm/5c48f3fe2d8a43adaa5a3a731b8b9f31.jpeg" }
+  ],
+  "Cinema": [
+      {
           "id": 1,
-          "sessao_id": 1,
-          "ocupado": true,
-          "numeroAssento": 1
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "sala_id": 8,
-      "horaDoDia": "13:30",
-      "assentos":[]
-    },
-    {
-      "id": 3,
-      "sala_id": 8,
-      "horaDoDia": "16:30",
-      "assentos":[]
+          "idAdministrador": 2,
+          "name": "cinema",
+          "Administrador": { "id": 2, "name": "elvis", "email": "Elvis@gmail.com", "role": "cinema_administrador" },
+          "Salas": [
+              {
+                  "id": 8,
+                  "id_filme": 2,
+                  "name": "sala",
+                  "quantidadeDeAssentos": 5,
+                  "quantidadeDeSessaos": 1,
+                  "filme": { "id": 2, "id_produtora": 1, "titulo": "cavalos 2. a vingaca", "ano": "20/02/2024", "imgPath": "https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg" },
+                  "sessaos": [
+                      { "id": 1, "sala_id": 8, "horaDoDia": "10:30" },
+                      { "id": 2, "sala_id": 8, "horaDoDia": "19:30" }
+                  ]
+              },
+              {
+                  "id": 7,
+                  "id_filme": 1,
+                  "name": "sala+1",
+                  "quantidadeDeAssentos": 5,
+                  "quantidadeDeSessaos": 1,
+                  "filme": { "id": 1, "id_produtora": 1, "titulo": "cavalos", "ano": "20/02/2023", "imgPath": "https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg" },
+                  "sessaos": [
+                      { "id": 1, "sala_id": 8, "horaDoDia": "10:30" },
+                      { "id": 2, "sala_id": 8, "horaDoDia": "19:30" }
+                  ]
+              }
+          ],
+          "filmes_Em_Cartaz": [
+              { "id": 1, "id_produtora": 1, "titulo": "cavalos", "ano": "20/02/2023", "imgPath": "https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg" },
+              { "id": 2, "id_produtora": 1, "titulo": "cavalos 2. a vingaca", "ano": "20/02/2024", "imgPath": "https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg" }
+          ],
+          "Employees": []
+      },
+      {
+          "id": 2,
+          "idAdministrador": 2,
+          "name": "cinema_2",
+          "Administrador": { "id": 2, "name": "elvis", "email": "Elvis@gmail.com", "role": "cinema_administrador" },
+          "Salas": [
+            {
+              "id": 10,
+              "id_filme": 1,
+              "name": "xttt",
+              "quantidadeDeAssentos": 0,
+              "quantidadeDeSessaos": 0,
+              "filme":{ "id": 1, "id_produtora": 1, "titulo": "cavalos", "ano": "20/02/2023", "imgPath": "https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg" },
 
-    },
-    {
-      "id": 4,
-      "sala_id": 8,
-      "horaDoDia": "19:30",
-      "assentos":[]
 
-    },
-    {
-      "id": 5,
-      "sala_id": 8,
-      "horaDoDia": "19:30",
-      "assentos":[
-        {
-          "id": 7,
-          "sessao_id": 5,
-          "ocupado": true,
-          "numeroAssento": 2
-        },
-        {
-          "id": 6,
-          "sessao_id": 5,
-          "ocupado": false,
-          "numeroAssento": 1
-        }
-      ]
-    }
+              "sessaos": [
+                  { "id": 1, "sala_id": 8, "horaDoDia": "10:30" },
+                  { "id": 2, "sala_id": 8, "horaDoDia": "19:30" }
+              ]
+          }
+          ],
+          "filmes_Em_Cartaz": [
+              { "id": 1, "id_produtora": 1, "titulo": "cavalos", "ano": "20/02/2023", "imgPath": "https://uploads.tapatalk-cdn.com/20211209/d2064adb73a433346e9f3d63a15d65bc.jpg" },
 
+              { "id": 2, "id_produtora": 1, "titulo": "cavalos 2. a vingaca", "ano": "20/02/2024", "imgPath": "https://www.papodecinema.com.br/wp-content/uploads/2022/03/20220307-eu-te-amo-cara-papo-de-cinema-cartaz.jpeg" },
+
+              { "id": 4, "id_produtora": 2, "titulo": "Oppenheimer", "ano": "20/06/2023", "imgPath": "https://a-static.mlcdn.com.br/800x560/poster-cartaz-oppenheimer-c-pop-arte-poster/poparteskins2/pos-03405-30x45cm/5c48f3fe2d8a43adaa5a3a731b8b9f31.jpeg" }
+          ],
+          "Employees": []
+      }
+  ],
+  "Sessao": [
+      { "id": 1, "sala_id": 8, "horaDoDia": "10:30" },
+      { "id": 2, "sala_id": 8, "horaDoDia": "19:30" }
   ],
 
-  "Assento":[
-    {
-      "id": 7,
-      "sessao_id": 5,
-      "ocupado": true,
-      "numeroAssento": 2
-    },
-    {
-      "id": 6,
-      "sessao_id": 5,
-      "ocupado": false,
-      "numeroAssento": 1
-    },
-    {
-      "id": 5,
-      "sessao_id": 1,
-      "ocupado": false,
-      "numeroAssento": 5
-    },
-    {
-      "id": 4,
-      "sessao_id": 1,
-      "ocupado": false,
-      "numeroAssento": 4
-    },
-    {
-      "id": 3,
-      "sessao_id": 1,
-      "ocupado": false,
-      "numeroAssento": 3
-    },
-    {
-      "id": 2,
-      "sessao_id": 1,
-      "ocupado": false,
-      "numeroAssento": 2
-    },
-    {
-      "id": 1,
-      "sessao_id": 1,
-      "ocupado": false,
-      "numeroAssento": 1
-    }
+  "Assento": [
+      {
+          "id": 1,
+          "sala_id": 8,
+          "numeroAssento": 1,
+          "AssentoOcupado": [
+              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": false },
+              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          ]
+      },
+      {
+          "id": 2,
+          "sala_id": 8,
+          "numeroAssento": 2,
+          "AssentoOcupado": [
+              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
+              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          ]
+      },
+      {
+          "id": 3,
+          "sala_id": 8,
+          "numeroAssento": 3,
+          "AssentoOcupado": [
+              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
+              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          ]
+      },
+      {
+          "id": 4,
+          "sala_id": 8,
+          "numeroAssento": 4,
+          "AssentoOcupado": [
+              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
+              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          ]
+      }
+  ],
+
+  "filme_has_tb_sala": [
+    {"id":1, "filme_id": 2, "sala_id": 8 },
+    {"id":2, "filme_id": 1, "sala_id": 10 }
   ]
 }
-

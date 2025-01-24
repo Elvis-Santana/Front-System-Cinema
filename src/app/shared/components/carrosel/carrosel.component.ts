@@ -11,8 +11,8 @@ import { ListService } from '../../services/listService/list.service';
   templateUrl: './carrosel.component.html',
   styleUrl: './carrosel.component.scss'
 })
-export class CarroselComponent implements OnInit{
-  
+export class CarroselComponent implements OnInit {
+
   @ViewChild('scrollbar') RefInput!: ElementRef;
   @ViewChildren('items') items!: QueryList<ElementRef>;
   protected imgCarrosel = signal<string[]>([]);
@@ -21,7 +21,7 @@ export class CarroselComponent implements OnInit{
 
   async ngOnInit() {
 
-    (await this.listService.GetFilme()).subscribe((data) => {
+    this.listService.ObGetFilme().subscribe((data) => {
 
       const imgs: String[] = data.map(e => e.imgPath);
       this.imgCarrosel.set(imgs as string[]);
@@ -30,18 +30,18 @@ export class CarroselComponent implements OnInit{
   }
 
 
-  public scrollInto(code :string) {
+  public scrollInto(code: string) {
 
-    if(code ==="l")
+    if (code === "l")
       this.numberCurrent++;
     else
-      this.numberCurrent-=1;
+      this.numberCurrent -= 1;
 
 
     if (this.numberCurrent > this.items.length - 1)
       this.numberCurrent = 0
-    else if(this.numberCurrent < 0){
-      this.numberCurrent=this.items.length - 1
+    else if (this.numberCurrent < 0) {
+      this.numberCurrent = this.items.length - 1
     }
 
     const item = this.items.map(e => e)
@@ -51,7 +51,7 @@ export class CarroselComponent implements OnInit{
       scrollItem.scrollIntoView({
         inline: "center",
         behavior: "smooth",
-    });
+      });
 
     }, 100);
 

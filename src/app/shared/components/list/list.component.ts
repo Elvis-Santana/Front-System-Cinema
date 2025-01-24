@@ -14,6 +14,7 @@ import { CardCinemaComponent } from '../card/card-cinema/card-cinema.component';
 import { CardProdutoraComponent } from '../card/card-Produtora/cardProdutora.component';
 import { CarroselComponent } from '../carrosel/carrosel.component';
 import { CinemaSelectionComponentComponent } from '../../../pages/CinemaSelectionComponent/cinema-selection-component/cinema-selection-component.component';
+import { RouterService } from '../../services/routerService/router.service';
 
 
 
@@ -55,6 +56,7 @@ export class ListComponent implements OnInit ,OnDestroy {
   protected PalavrasReservadas = PalavrasReservadas;
   protected url: string = "";
   public httpClient = inject(HttpClient)
+  protected routerService = inject(RouterService);
 
   async ngOnInit() {
 
@@ -64,6 +66,12 @@ export class ListComponent implements OnInit ,OnDestroy {
 
     this.url = (this.router.url.slice(1,));
   }
+
+  protected OnEventVanegationFilme(filme:IFilme){
+    this.routerService.nav(`selecionar-cinema/${filme.id}`);
+
+  }
+
 
   ngOnDestroy(): void {
     this.listService.OnDestroy()

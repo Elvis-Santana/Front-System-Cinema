@@ -2,15 +2,16 @@
   <mat-card-header>
 
       <mat-card-title>
-      <h2>{{Cinema.name}}</h2>
+      <h2>{{cinema.name}}</h2>
       </mat-card-title>
   </mat-card-header>
 
-    @if(ViewFilmes){
+    @if(viewFilmes){
       <mat-card-content>
 
-        @for (f of Cinema.filmes_Em_Cartaz; track $index) {
-        <app-card-filme [Filme]="f"></app-card-filme>
+        @for (f of filmesEmSala; track $index) {
+
+        <app-card-filme (eventComparar)="onEventNavigation($event)"  [filme]="f"></app-card-filme>
         }
 
 

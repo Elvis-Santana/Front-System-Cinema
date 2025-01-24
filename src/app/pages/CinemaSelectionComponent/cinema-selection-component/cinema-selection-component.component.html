@@ -1,6 +1,6 @@
 <div class="container-list-cinema-comprar">
   <div class="list-cinema-comprar">
-    <div class="container-btn-close" (click)="OnEventExit()">
+    <div class="container-btn-close" (click)="onEventExit()">
       <button mat-icon-button>
 
         <mat-icon>arrow_circle_left</mat-icon>
@@ -12,10 +12,9 @@
 
       <section>
         <form [formGroup]="form" class="form">
-
           <mat-form-field>
 
-            <mat-select  (selectionChange)="OnEventSelectCinemaInSalas($event)" formControlName="selectCinema">
+            <mat-select  (selectionChange)="onEventSelectCinemaInSalas($event)" formControlName="selectCinema">
 
               @for (item of cinemas$|async; track $index) {
               <mat-option [value]="item">{{item.name}}</mat-option>
@@ -25,11 +24,9 @@
 
           </mat-form-field>
 
-
-
           <mat-form-field>
 
-            <mat-select (selectionChange)="OnEventSelectSalaInSessaos($event)" formControlName="selectSala">
+            <mat-select (selectionChange)="onEventSelectSalaInSessaos($event)" formControlName="selectSala">
 
               @for (item of salas$|async; track $index) {
               <mat-option [value]="item">{{item.name}}</mat-option>
@@ -41,7 +38,7 @@
 
           <article class="container-sessao">
             @for (item of sessaos$|async; track $index) {
-            <button mat-flat-button (click)="OnEventGetAssentosInSessao(item)">
+            <button mat-flat-button (click)="onEventGetAssentosInSessao(item)">
               Sessão das {{item.horaDoDia}} horas
             </button>
             }
@@ -62,7 +59,15 @@
 
           </article>
 
+          <article>
+            <input type="date"
+              formControlName="date"
+
+               required>
+
+          </article>
         </form>
+
       </section>
 
 

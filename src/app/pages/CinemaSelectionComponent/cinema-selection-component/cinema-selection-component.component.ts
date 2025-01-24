@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, OnInit, ViewChild, viewChild, ViewRef } from '@angular/core';
+import { Component, EventEmitter, inject, OnDestroy, OnInit, Output, ViewChild, viewChild, ViewRef } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { CinemaSelectionComponentComponetService } from '../../../shared/services/CinemaSelectionComponentComponetService/cinema-selection-component-componet.service';
 import { ICinema } from '../../../shared/interfaces/ICinema.interface';
@@ -15,6 +15,7 @@ import { ISessao } from '../../../shared/interfaces/Sessao.interface';
 import { IAssento, IAssentoOcupado } from '../../../shared/interfaces/Assento.interface';
 import { CommonModule } from '@angular/common';
 import { AssentoService } from '../../../shared/services/Assento-service/assento.service';
+import { IFilme } from '../../../shared/interfaces/Filme.interface';
 
 @Component({
   selector: 'app-cinema-selection-component',
@@ -27,28 +28,27 @@ import { AssentoService } from '../../../shared/services/Assento-service/assento
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+
 
   ],
   templateUrl: './cinema-selection-component.component.html',
   styleUrl: './cinema-selection-component.component.scss'
 })
-export class CinemaSelectionComponentComponent implements OnInit ,OnDestroy{
+export class CinemaSelectionComponentComponent implements OnInit, OnDestroy {
 
-  protected CinemaSelectionService = inject(CinemaSelectionComponentComponetService);
+  protected cinemaSelectionService = inject(CinemaSelectionComponentComponetService);
 
   protected activatedRoute = inject(ActivatedRoute);
 
-
-
-  protected cinemas$: Observable<ICinema[]> = this.CinemaSelectionService.ObCinemaFilter();
-  protected salas$: Observable<ISala[]> = this.CinemaSelectionService.ObGetSalas()
-  protected sessaos$: Observable<ISessao[]> = this.CinemaSelectionService.ObGetSessaos()
-  protected assentos$: Observable<IAssento[]> = this.CinemaSelectionService.ObGetAssentos();
+  protected cinemas$: Observable<ICinema[] | null> = this.cinemaSelectionService.obCinemaFilter();
+  protected salas$=this.cinemaSelectionService.obGetSalas()
+  protected sessaos$= this.cinemaSelectionService.obGetSessaos()
+  protected assentos$= this.cinemaSelectionService.obGetAssentos();
 
   protected form: FormGroup = new FormGroup({
 
-    time: new FormControl<string | null>(""),
+    date: new FormControl<Date | null>(null),
     selectSala: new FormControl<ISala | null>(null),
     selectCinema: new FormControl<ICinema | null>(null)
 
@@ -56,62 +56,53 @@ export class CinemaSelectionComponentComponent implements OnInit ,OnDestroy{
 
 
 
+
   async ngOnInit() {
-    this.GetCinemasSelection();
-
+    if (!this.cinemaSelectionService.getIsUserFromPageCinema())
+      this.getCinemasSelection();
   }
 
-  public GetCinemasSelection() {
-
+  public getCinemasSelection() {
     const id: Number = Number(this.activatedRoute.snapshot.paramMap.get("id")) ?? null;
-    if (!id || id === null) {
-      this.CinemaSelectionService.resertObservabloCinemas();
-      return;
-    }
-
-    this.CinemaSelectionService.GetCinemasForMovie(Number(id));
-
+    this.cinemaSelectionService.getCinemasForMovie(Number(id));
   }
 
-  public OnEventSelectCinemaInSalas(cinema: MatSelectChange) {
+
+  public onEventSelectCinemaInSalas(cinema: MatSelectChange) {
     const cinemaConvent = (cinema.value as ICinema);
 
     this.form.get("selectSala")?.reset();
-    this.CinemaSelectionService.resertObservabloSalas();
-    this.CinemaSelectionService.resertObservabloSessos();
-    this.CinemaSelectionService.resertObservabloAssentos();
+    this.cinemaSelectionService.resertObservabloSalas();
+    this.cinemaSelectionService.resertObservabloSessos();
+    this.cinemaSelectionService.resertObservabloAssentos();
 
-    this.CinemaSelectionService.SetObservabloSalas(cinemaConvent.Salas);
+    const salasFilterFromCinama = cinemaConvent.Salas.filter(x => x.id_filme == this.cinemaSelectionService.getFilmeId())
+    this.cinemaSelectionService.setObservabloSalas(salasFilterFromCinama);
   }
 
 
 
-  public async OnEventSelectSalaInSessaos(salas: MatSelectChange) {
+  public async onEventSelectSalaInSessaos(salas: MatSelectChange) {
     const salaConvent = (salas.value as ISala);
     if (salaConvent.sessaos.length === 0) {
-      this.CinemaSelectionService.resertObservabloSessos();
+      this.cinemaSelectionService.resertObservabloSessos();
       console.error("sessaos não encontradas")
       return;
     }
-    this.CinemaSelectionService.resertObservabloAssentos();
-    this.CinemaSelectionService.resertObservabloSessos();
-
-    this.CinemaSelectionService.SetObservabloSessao(salaConvent.sessaos);
-
-
+    this.cinemaSelectionService.resertObservabloAssentos();
+    this.cinemaSelectionService.resertObservabloSessos();
+    this.cinemaSelectionService.setObservabloSessao(salaConvent.sessaos);
 
   }
 
-  public OnEventGetAssentosInSessao(sesssao: ISessao) {
+  public onEventGetAssentosInSessao(sesssao: ISessao) {
 
     if (!sesssao) {
       console.error("sessao null");
-      this.CinemaSelectionService.resertObservabloAssentos();
+      this.cinemaSelectionService.resertObservabloAssentos();
       return;
-
     }
-
-    this.CinemaSelectionService.GetAssentoAndSessao(
+    this.cinemaSelectionService.getAssentoAndSessao(
       sesssao,
       this.form.get("selectSala")?.value as ISala
     );
@@ -119,16 +110,17 @@ export class CinemaSelectionComponentComponent implements OnInit ,OnDestroy{
   }
 
 
-  public OnEventExit() {
+  public onEventExit() {
 
   }
 
-  public OnEventGetTime() {
+  public onEventGetTime() {
 
     console.log(this.form.get("time")?.value);
   }
+
   ngOnDestroy(): void {
-    this.CinemaSelectionService.OnDestroy();
+    this.cinemaSelectionService.OnDestroy();
   }
 
 }

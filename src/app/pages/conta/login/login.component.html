@@ -16,8 +16,16 @@
 
       <a matListItemTitle [routerLink]="['']">home </a>
 
-    </form>
+      <div>
+        <p>signal:{{signal()}}</p>
+        <p>computed: {{computedExemplo()}}</p>
+        <p>showCount: {{showCount()}}</p>
+      </div>
 
+      <button (click)="executar()">signal++</button>
+      <button (click)="executarShowCount()">ShowCount</button>
+
+    </form>
 
   </article>
 </section>

@@ -1,8 +1,8 @@
-import { IAssento } from "./Assento.interface"
+import { IAssento, IAssentoOcupado } from "./Assento.interface"
 
-export interface ISessao{
-    id: Number,
-    sala_id: Number,
-    horaDoDia: String
-    assentos: IAssento[]
+export interface ISessao {
+  id: number,
+  sala_id: number,
+  horaDoDia: string
+  // assentosOcupado: IAssentoOcupado[]
 }

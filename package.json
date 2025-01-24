@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o ",
+    "start": "ng serve -o --host 192.168.0.107 --port=4200",
+    "api":"json-server --watch db.json --host 192.168.0.107 --port 3000",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"

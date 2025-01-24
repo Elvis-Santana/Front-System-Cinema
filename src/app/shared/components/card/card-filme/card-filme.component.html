@@ -3,31 +3,31 @@
 
   <mat-card-header>
     <mat-card-title>
-      {{Filme.titulo}}
+      {{filme.titulo}}
 
     </mat-card-title>
 
 
     <mat-card-subtitle>
-      {{Filme.ano}}
+      {{filme.ano}}
     </mat-card-subtitle>
   </mat-card-header>
 
 
 
   <mat-card-content>
-    <img [src]="Filme.imgPath">
+    <img [src]="filme.imgPath">
 
     <mat-card-actions>
-      <button class="btn-detanhar" mat-raised-button (click)="OnEventDetanhar(Filme)">
+      <button class="btn-detanhar" mat-raised-button (click)="onEventDetanhar(filme)">
         DETANHAR
       </button>
-      <button class="btn-event-list-cinema" mat-raised-button (click)="OnEventListCinema(Filme.id)">
+      <button class="btn-event-list-cinema" mat-raised-button (click)="onEventListCinema(filme)">
         Comparar
       </button>
     </mat-card-actions>
 
- 
+
 
   </mat-card-content>
 

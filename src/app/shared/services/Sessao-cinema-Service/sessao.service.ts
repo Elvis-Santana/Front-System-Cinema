@@ -15,7 +15,7 @@ export class SessaoService {
 
 
   public  GetSessaoById  = (id: Number) =>  this.http.get<ISessao>
-    (`http://localhost:3000/Sessao/${id}`)
+    (`http://192.168.0.107:3000/Sessao${id}`)
     .pipe(map((res: ISessao) => res));
 
 
