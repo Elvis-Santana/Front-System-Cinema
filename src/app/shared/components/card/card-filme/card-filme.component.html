@@ -16,7 +16,7 @@
 
 
   <mat-card-content>
-    <img [src]="filme.imgPath">
+    <img [src]="'http://localhost:5000/api/Filmes/GetImg?filePath='+ filme.imgPath">
 
     <mat-card-actions>
       <button class="btn-detanhar" mat-raised-button (click)="onEventDetanhar(filme)">

@@ -9,10 +9,15 @@
     @if(viewFilmes){
       <mat-card-content>
 
-        @for (f of filmesEmSala; track $index) {
 
-        <app-card-filme (eventComparar)="onEventNavigation($event)"  [filme]="f"></app-card-filme>
+        @for (sala of this.salas ; track $index) {
+        <h2 style="color: red;">{{sala.name}}</h2>
+            <app-card-filme
+            (eventComparar)="onEventNavigation($event,sala)"
+              [filme]="sala.filme"></app-card-filme>
+
         }
+
 
 
 

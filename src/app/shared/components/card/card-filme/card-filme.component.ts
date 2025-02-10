@@ -23,11 +23,12 @@ export class CardFilmeComponent {
 
   @Output() eventComparar: EventEmitter<IFilme> = new EventEmitter<IFilme>()
   @Input() filme!: IFilme;
+  // url :string = `https://localhost:5000/api/Filmes/GetImg?filePath=${this.filme.imgPath}`
 
   protected router = inject(RouterService);
 
 
-  public onEventDetanhar = (filme: IFilme) => this.router.nav(`filme/detalhar/${filme.id}`)
+  public onEventDetanhar = (filme: IFilme) => this.router.Router().navigate([`filme/detalhar/${filme.id}`])
 
 
   public onEventListCinema(filme: IFilme) {

@@ -35,14 +35,14 @@ export class ListService {
 
 
   public GetProdutora() {
-    this.http.get<IProdutora[]>(String(this.PORT_PRODUTORA.development.JOSN)).pipe(
+    this.http.get<IProdutora[]>(String('http://localhost:5000/api/Produtora')).pipe(
       takeUntil(this.ProdutoraDestroy$),
       map((res: IProdutora[]) => res)
     ).subscribe(e => this.Produtora$.next(e))
   }
   public GetFilme() {
 
-    this.http.get<IFilme[]>(String(this.PORT_FILMES.development.JOSN)).pipe(
+    this.http.get<IFilme[]>(String('http://localhost:5000/api/Filmes')).pipe(
       takeUntil(this.FilmeDestroy$),
       map((res: IFilme[]) => {
         return res;
@@ -53,7 +53,7 @@ export class ListService {
 
 
   public GetCinema() {
-    this.http.get<ICinema[]>(String(this.PORT_CINEMA.development.JOSN)).pipe(
+    this.http.get<ICinema[]>(String('http://localhost:5000/api/Cinema')).pipe(
       takeUntil(this.CinemaDestroy$),
       map((res: ICinema[]) => {
         return res;

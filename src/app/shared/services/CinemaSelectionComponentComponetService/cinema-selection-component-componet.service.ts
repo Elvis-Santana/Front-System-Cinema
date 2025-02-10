@@ -3,7 +3,7 @@ import { ICinema } from '../../interfaces/ICinema.interface';
 import { RouterService } from '../routerService/router.service';
 import { _PORTCINEMA } from '../../../../environments/enum/Ports';
 import { BehaviorSubject, filter, map, Subject, takeUntil, } from 'rxjs';
-import { IAssento } from '../../interfaces/Assento.interface';
+import { IAssento, IAssentoOcupadoEmSessao } from '../../interfaces/Assento.interface';
 import { ISessao } from '../../interfaces/Sessao.interface';
 import { ISala } from '../../interfaces/Sala.interface';
 import { ITb_filme_has_tb_sala } from '../../interfaces/Tb_filme_has_tb_sala';
@@ -14,7 +14,7 @@ import { ITb_filme_has_tb_sala } from '../../interfaces/Tb_filme_has_tb_sala';
 export class CinemaSelectionComponentComponetService {
 
   private PORT_CINEMA = _PORTCINEMA;
-  private url = this.PORT_CINEMA.development.JOSN.toString()
+  private urlBaseCinema = "http://localhost:5000/api/Cinema";
   protected routerService = inject(RouterService);
 
   protected http = inject(RouterService).getHttpClient();
@@ -38,38 +38,58 @@ export class CinemaSelectionComponentComponetService {
   private sessaosDestroy$ = new Subject<void>();
 
   private idFilme = signal<number | null>(null);
+  private idSala = signal<number | null>(null);
+  protected idcinema = signal<string | null>(null)
   private isUserFromPageCinema = signal<boolean>(false);
 
 
-  public getCinemasForMovie(id: number) {
-    this.setFilmeId(id)
-    this.http.get<ICinema[]>(this.url).pipe(
+  public getCinemasForMovie() {
+
+    const url = this.getCinemaId() ? `${this.urlBaseCinema}/${this.getCinemaId()}` : this.urlBaseCinema;
+
+
+    this.http.get<ICinema[]>(url).pipe(
       takeUntil(this.cinemasfilterOnDestroy$),
-      map(res =>
-        res.filter(e => e.Salas.some(x => x.id_filme == this.getFilmeId()))
+      map(res => {
+
+        if (Array.isArray(res))
+          return res.filter(e => e.salas.some(x => x.id_filme == this.getFilmeId()))
+
+        return res;
+
+      }
+
       )
     ).subscribe((ArrayCinemaFilter) => {
-      this.cinema$.next(ArrayCinemaFilter)
+
+      if (!Array.isArray(ArrayCinemaFilter)) {
+        this.cinema$.next([ArrayCinemaFilter])
+        return;
+      }
+
+      this.cinema$.next(ArrayCinemaFilter);
     })
   }
 
-  public getAssentoAndSessao(Sessao: ISessao, Sala: ISala): void {
-    this.http.get<IAssento[]>(`http://192.168.0.107:3000/Assento`)
+
+
+
+  public getAssentoAndSessao(sessao: ISessao, Sala: ISala): void {
+    this.http.get<IAssento[]>(`http://localhost:5000/api/Assento`)
       .pipe(
         takeUntil(this.assentosOnDestroy$),
-        filter(res => res.some((X) =>
-          X.sala_id == Sala.id &&
-          X.AssentoOcupado.some(E => E.sessao_id == Sessao.id))),
         map((res: IAssento[]) =>
-          res.map((A) => {
-            const filter = A.AssentoOcupado.filter(x => x.sessao_id == Sessao.id)
-            A.AssentoOcupado = filter;
-            return A;
+
+          res.map(a => {
+            const filter = a.assentoOcupadoEmSessao.filter(x => x.id_sessao == sessao.id)
+            a.assentoOcupadoEmSessao = filter;
+            return a;
+
           })
+
         )
       )
       .subscribe(assentos => {
-        console.log(assentos)
         this.assentos$.next(assentos)
       })
   }
@@ -77,8 +97,14 @@ export class CinemaSelectionComponentComponetService {
 
 
   public getFilmeId = () => this.idFilme();
-  public setFilmeId = (id: number) => this.idFilme.set(id);
+  public setFilmeId = (id: number | null) => this.idFilme.set(id);
 
+
+  public getSalaId = () => this.idSala();
+  public setSalaId = (id: number | null) => this.idSala.set(id);
+
+  public getCinemaId = () => this.idcinema();
+  public setCinemaId = (id: string | null) => this.idcinema.set(id);
 
   public getIsUserFromPageCinema = () => this.isUserFromPageCinema();
   public setIsUserFromPageCinema = (FromPageCinema: boolean) => this.isUserFromPageCinema.set(FromPageCinema);
@@ -89,13 +115,7 @@ export class CinemaSelectionComponentComponetService {
   public resertObservabloSalas = () => this.salas$.next([]);
   public resertObservabloSessos = () => this.sessaos$.next([]);
 
-  public setCinemaFormCardCinema(cinemas: ICinema[], id: number) {
 
-
-    this.setFilmeId(id);
-    this.setObservabloCinema(cinemas)
-    this.isUserFromPageCinema.set(true);
-  }
 
   public setObservabloCinema = (cinemas: ICinema[]) => {
     this.cinema$.next(cinemas);
@@ -133,6 +153,9 @@ export class CinemaSelectionComponentComponetService {
     this.resertObservabloSalas();
     this.resertObservabloSessos();
     this.isUserFromPageCinema.set(false);
+    this.setCinemaId(null);
+    this.setFilmeId(null);
+    this.setSalaId(null);
 
   }
 

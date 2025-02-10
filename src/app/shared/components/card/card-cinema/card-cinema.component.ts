@@ -6,6 +6,7 @@ import { MatButton } from '@angular/material/button';
 import { CinemaSelectionComponentComponetService } from '../../../services/CinemaSelectionComponentComponetService/cinema-selection-component-componet.service';
 import { RouterService } from '../../../services/routerService/router.service';
 import { IFilme } from '../../../interfaces/Filme.interface';
+import { ISala } from '../../../interfaces/Sala.interface';
 
 @Component({
   selector: 'app-card-cinema',
@@ -23,20 +24,23 @@ export class CardCinemaComponent implements OnInit {
   protected routerService = inject(RouterService);
 
   @Input() cinema!: ICinema;
-  protected filmesEmSala!: IFilme[];
+  protected salas!: ISala[];
   protected viewFilmes: boolean = true
 
 
   ngOnInit(): void {
-    this.filmesEmSala = this.cinema.Salas.map(x => x.filme);
+    this.salas = this.cinema.salas;
+
   }
   public selectViewFilmes(): void {
     this.viewFilmes = !this.viewFilmes;
   }
 
-  protected onEventNavigation(filme: IFilme) {
-    this.cinemaSelectionService.setCinemaFormCardCinema([this.cinema], filme.id)
-    this.routerService.nav(`selecionar-cinema/${filme.id}`);
+  protected onEventNavigation(filme: IFilme,sala:ISala) {
+    this.routerService.Router().navigate(
+      [`selecionar-cinema/${filme.id}`],
+      { queryParams: { cinema: this.cinema.id ,sala:sala.id} });
+
   }
 
 }

@@ -1,15 +1,14 @@
 export interface IAssento {
-  id: Number,
-  sala_id:Number,
-  numeroAssento: Number
-  AssentoOcupado: IAssentoOcupado[],
+  id: number,
+  id_sala:number,
+  numeroAssento: number
+  assentoOcupadoEmSessao: IAssentoOcupadoEmSessao[],
 }
 
-export interface IAssentoOcupado{
- id:Number,
- id_Assento:Number,
- sessao_id: Number,
- sala_id:Number
+export interface IAssentoOcupadoEmSessao{
+ id:number,
+ id_Assento:number,
+ id_sessao: number,
  dataEHora:string,
  ocupado: boolean,
 

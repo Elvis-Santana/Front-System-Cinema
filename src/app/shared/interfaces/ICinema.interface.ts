@@ -10,7 +10,7 @@ export interface ICinema{
   name :String,
   precoDoIngresso:number,
   Administrador :IUser
-  Salas :ISala[],
+  salas :ISala[],
     filmes_Em_Cartaz :IFilme[]
   //   Employees { get; set; } = new();
 }

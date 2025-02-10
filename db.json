@@ -126,36 +126,36 @@
           "id": 1,
           "sala_id": 8,
           "numeroAssento": 1,
-          "AssentoOcupado": [
-              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": false },
-              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          "assentoOcupadoEmSessao": [
+              { "id": 2, "id_Assento": 1, "id_sessao": 1, "dataEHora": "2020-03-12 10:30", "ocupado": false },
+              { "id": 3, "id_Assento": 1, "id_sessao": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
           ]
       },
       {
           "id": 2,
           "sala_id": 8,
           "numeroAssento": 2,
-          "AssentoOcupado": [
-              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
-              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          "assentoOcupadoEmSessao": [
+              { "id": 2, "id_Assento": 2, "id_sessao": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
+              { "id": 3, "id_Assento": 2, "id_sessao": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
           ]
       },
       {
           "id": 3,
           "sala_id": 8,
           "numeroAssento": 3,
-          "AssentoOcupado": [
-              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
-              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          "assentoOcupadoEmSessao": [
+              { "id": 2, "id_Assento": 3, "id_sessao": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
+              { "id": 3, "id_Assento": 3, "id_sessao": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
           ]
       },
       {
           "id": 4,
           "sala_id": 8,
           "numeroAssento": 4,
-          "AssentoOcupado": [
-              { "id": 2, "id_Assento": 2, "sessao_id": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
-              { "id": 3, "id_Assento": 2, "sessao_id": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
+          "assentoOcupadoEmSessao": [
+              { "id": 2, "id_Assento": 4, "id_sessao": 1, "dataEHora": "2020-03-12 10:30", "ocupado": true },
+              { "id": 3, "id_Assento": 4, "id_sessao": 2, "dataEHora": "2020-03-12 19:30", "ocupado": false }
           ]
       }
   ],
