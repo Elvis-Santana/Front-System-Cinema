@@ -12,7 +12,7 @@ export const routes: Routes = [
 
   {
     path: '',
-   // canActivate:[authGuard],
+    canActivate:[authGuard],
     component: HomeComponent,
     children: [
 

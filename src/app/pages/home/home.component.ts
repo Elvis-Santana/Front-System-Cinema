@@ -17,8 +17,8 @@ import { CinemaSelectionComponentComponent } from '../CinemaSelectionComponent/c
     MatToolbarModule,
     RouterOutlet,
     RouterModule,
-    HeaderComponent,
-    ],
+    HeaderComponent
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

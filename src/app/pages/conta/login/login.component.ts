@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, effect, inject, Injector, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatLabel } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
@@ -7,11 +7,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet, RouterModule } from '@angular/router';
 import { HomeComponent } from '../../home/home.component';
 import { SessaoServiceService } from '../../../shared/services/sessaoService/sessao-service.service';
-import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ILogin } from '../../../shared/interfaces/ILogin';
-import { BehaviorSubject, interval, map, of, switchMap } from 'rxjs';
+import { BehaviorSubject, filter, fromEvent, interval, map, Observable, of, single, switchMap, timeout, timer } from 'rxjs';
 import { signalSetFn } from '@angular/core/primitives/signals';
 import { CommonModule } from '@angular/common';
+import { ModalComponent } from '../../../shared/modal/modal.component';
+import { ModalService } from '../../../shared/services/Modal-service/modal.service';
+import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
+import { IResponseError } from '../../../shared/interfaces/ResponseError.interface';
 
 
 @Component({
@@ -24,65 +28,56 @@ import { CommonModule } from '@angular/common';
     MatToolbarModule,
     RouterModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    ModalComponent
 
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit ,OnDestroy{
 
   protected sessaoServiceService = inject(SessaoServiceService);
-  protected form !: FormGroup
-  protected signal = signal(1)
-  protected showCount = signal(true)
+  protected open: boolean = false;
+  protected $errorLogin = this.sessaoServiceService.obErrorLogin();
+  protected modelService = inject(ModalService);
 
+  protected clickBtnLogin!: boolean;
+  protected form : FormGroup  = new FormGroup({
+    email: new FormControl<String>(''),
+    password: new FormControl<String>('', Validators.required),
 
-
-  protected computedExemplo = computed(() => {
-    console.log('computed! ACIONADO!!!!!')
-    if (this.showCount())
-      return `${this.signal()} computed`;
-    else
-      return 'nada'
   })
 
+
+  constructor(private injector: Injector) {}
   ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl<String>(''),
-      password: new FormControl<String>(''),
+    this.$errorLogin.pipe(filter(e => e?.error))
+    .subscribe(x => {
+      const error = x?.error as IResponseError;
+      this.modelService.setConteudoModel(error.messagen);
+      this.modelService.onEventOpenModel();
+      this.clickBtnLogin = false;
 
-    })
-
-    // this.form.get("email")?.valueChanges
-    //   .pipe(
-    //     switchMap((value) => this.ToggleSwitch(value)
-    //     )
-    //   )
-    //   .subscribe(e => console.log(e))
-
+    });
 
   }
 
-  executar = (): void => this.signal.update(atual => atual + 1)
 
-   executarShowCount = (): void => this.showCount.update(atual => !atual)
-
-
-  // private ToggleSwitch(e: any) {
-  //   return of(e).pipe(
-  //     map((value) => `teste ${value}`)
-  //   )
-  // }
-
-  public async OnEventLogin() {
-
+  public OnEventLogin() {
     const data: ILogin = this.form.value;
-    console.log(data)
-    // await this.sessaoServiceService.login(data);
+    if (this.form.valid) {
+      console.log(data);
+      this.sessaoServiceService.login(data);
+      this.clickBtnLogin = true;
+    }
+
   }
 
 
 
 
+  ngOnDestroy(): void {
+    this.clickBtnLogin = false;
+  }
 }

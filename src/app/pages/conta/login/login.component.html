@@ -1,4 +1,7 @@
+<app-modal  [classModel]="'classError'"></app-modal>
+
 <section>
+
   <article>
     <form [formGroup]="form">
       <mat-label class="label-input">Email</mat-label>
@@ -12,18 +15,10 @@
         <a matListItemTitle [routerLink]="['/criarConta']">click aquí </a>
       </p>
 
-      <button (click)="OnEventLogin()">ENTER</button>
+      <button [ngClass]="{'carregando':clickBtnLogin && !modelService.getOpenModel()}" (click)="OnEventLogin()">ENTER</button>
 
       <a matListItemTitle [routerLink]="['']">home </a>
 
-      <div>
-        <p>signal:{{signal()}}</p>
-        <p>computed: {{computedExemplo()}}</p>
-        <p>showCount: {{showCount()}}</p>
-      </div>
-
-      <button (click)="executar()">signal++</button>
-      <button (click)="executarShowCount()">ShowCount</button>
 
     </form>
 

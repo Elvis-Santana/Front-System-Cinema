@@ -1,27 +1,36 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { token } from '../shared/Model/tokenModel';
-import { inject } from '@angular/core';
+import { inject, signal } from '@angular/core';
 import { SessaoServiceService } from '../shared/services/sessaoService/sessao-service.service';
 import { ITokenReturn } from '../shared/interfaces/ITokenReturn';
 import { RouterService } from '../shared/services/routerService/router.service';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { catchError, map, of, retry } from 'rxjs';
+import { TokenReturn } from '../shared/Model/tokenResultModel';
 
-export const authGuard: CanActivateFn = async (route, state) => {
-
+export const authGuard: CanActivateFn = (route, state) => {
+  const http = inject(HttpClient);
+  const Route = inject(Router);
   const token: token = { token: String(localStorage.getItem("token")) }
-  const sessaoServiceService = inject(SessaoServiceService);
-  const routerService = inject(RouterService)
 
+  if (!token)
+    return false;
+  
 
-  try {
-    var result = await sessaoServiceService.validToken(token);
+  const next = http.get(`http://localhost:5000/api/Login?token=${token.token}`).pipe(
+    map((x) => {
+      if (x != null && (x as TokenReturn).success)
+        return true;
 
-    return result.success
-  } catch (ex) {
-    routerService.nav('/login')
-    return (ex as ITokenReturn).success
+      return Route.parseUrl("/login")
 
-  }
+    })
+    , catchError(err => {
+      console.error(err)
+      return of(Route.parseUrl("/login"))
+    })
+  );
 
+  return next;
 
-
-};
+}

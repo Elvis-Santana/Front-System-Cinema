@@ -1,18 +1,11 @@
-import { HttpClient, HttpErrorResponse, HttpResponseBase } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Ports } from '../../../../environments/enum/Ports';
 import { IUser } from '../../interfaces/IUser.interface';
 import { ILogin } from '../../interfaces/ILogin';
 import { token } from '../../Model/tokenModel';
-import { Token } from '@angular/compiler';
-import { ITokenReturn } from '../../interfaces/ITokenReturn';
-import { TokenReturn } from '../../Model/tokenResultModel';
-import { Router } from '@angular/router';
-import { authGuard } from '../../../Auth/auth.guard';
 import { RouterService } from '../routerService/router.service';
-
-
-
+import { Subject } from 'rxjs';
 
 
 @Injectable({
@@ -21,6 +14,8 @@ import { RouterService } from '../routerService/router.service';
 export class SessaoServiceService {
   protected http = inject(HttpClient);
   protected router = inject(RouterService);
+
+  protected $obErrorLogin = new Subject<HttpErrorResponse>();
 
   constructor() { }
 
@@ -31,43 +26,37 @@ export class SessaoServiceService {
     })
   }
 
-  public async login(lofin: ILogin) {
+  public login(lofin: ILogin) {
     this.http
-      .post(`${Ports.Api_CSharp_PortsLogin}${lofin.password}`, null)
+      .post(
+        `http://localhost:5000/api/Login?token=${lofin.password}`, lofin.password)
       .subscribe((e) => {
-
         const token = e as token;
-
-        console.log(token);
         this.setToken(token.token);
+      }, (err: HttpErrorResponse) => {
+        this.$obErrorLogin.next(err);
+
       })
   }
 
+
+  public obErrorLogin = () => this.$obErrorLogin.asObservable();
   public setToken(token: String) {
     localStorage.setItem("token", String(token));
 
     console.log(localStorage.getItem("token"));
+    this.router.nav('');
   }
 
-  public logout(){
+  public logout() {
     localStorage.removeItem("token");
     this.router.nav('/login');
 
   };
 
 
-  public validToken = async (token: token) => new Promise<ITokenReturn>((result, reject) => {
-    this.http.get(`${Ports.Api_CSharp_PortsLogin}${token.token}`)
-      .subscribe((e) => {
-        return result(new TokenReturn(true));
-      }, (error: HttpErrorResponse) => {
-        console.log(error.error)
-        if (error.error != null)
-          return reject(new TokenReturn(false));
-        return reject(new TokenReturn(false));
 
-      })
-  })
+
 
 
 
