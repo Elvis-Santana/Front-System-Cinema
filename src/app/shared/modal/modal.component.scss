@@ -1,0 +1,65 @@
+@mixin styleErrorAndSuccess ($color) {
+  color: $color;
+  box-shadow: 0 0 10px $color;
+}
+
+.classDialog {
+  margin-right: 1rem;
+  margin-top: .2rem;
+  border-radius: 5px;
+  padding: 0;
+  animation: anim 1s;
+
+  &.dialogClose {
+    animation:  reverseAnim 1s;
+
+  }
+
+  div {
+    width: 300px;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+  }
+
+  p {
+    display: flex;
+    margin: 0;
+    word-break: break-all;
+    font-size: large;
+    text-transform: uppercase;
+  }
+}
+
+.classError {
+  @include styleErrorAndSuccess(red);
+}
+
+.classSuccess {
+  @include styleErrorAndSuccess(green);
+
+
+}
+
+
+
+@keyframes anim {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+
+  }
+}
+@keyframes reverseAnim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

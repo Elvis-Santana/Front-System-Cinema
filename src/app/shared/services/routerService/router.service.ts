@@ -9,10 +9,6 @@ export class RouterService {
   protected http = inject(HttpClient)
   protected router = inject(Router)
 
-  constructor() {
-
-
-   }
 
 
   public getHttpClient=()=> this.http;
